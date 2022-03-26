@@ -1,0 +1,21 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  // Refer to https://github.com/microsoft/vscode/issues/11963#issuecomment-317830768
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/build/**": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.options": {
+    "configFile": "./config/.eslintrc",
+    "ignorePath": "./config/.eslintignore"
+  },
+  "prettier.configPath": "./config/.prettierrc",
+  "prettier.ignorePath": "./config/.prettierignore"
+}

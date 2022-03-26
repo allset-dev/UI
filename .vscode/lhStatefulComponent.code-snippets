@@ -1,0 +1,43 @@
+{
+  "lhStatefulComponent": {
+    "prefix": "lhStatefulComponent",
+    "body": [
+      "import { connect } from 'react-redux';",
+      "// import { get, identity } from 'lodash';",
+      "// import { array, bool, shape, number, string } from 'prop-types';",
+      "",
+      "// import {} from 'lhComponent';",
+      "// import {} from 'lhConstants';",
+      "// import {} from 'lhUtil';",
+      "",
+      "import { actions, selectors } from './redux';",
+      "",
+      "const propTypes = {};",
+      "",
+      "function ${1}Component() {",
+      "  return <div className=\"lh${1/([a-z]*)(([A-Z])+([a-z]+))?/${1:/downcase}${2:+-}${3:/downcase}${4:/downcase}/g}\">Hello World!</div>;",
+      "}",
+      "",
+      "const mapState = state => {",
+      "  const view = selectors.getView(state);",
+      "  const data = selectors.getData(state);",
+      "",
+      "  return {",
+      "    ...view,",
+      "    ...data,",
+      "  };",
+      "};",
+      "",
+      "const mapDispatch = dispatch => ({",
+      "  test: () => {",
+      "    dispatch(actions.test());",
+      "  },",
+      "});",
+      "",
+      "${1}Component.propTypes = propTypes;",
+      "export const ${1} = connect(mapState, mapDispatch)(${1}Component);",
+      ""
+    ],
+    "description": "lhStatefulComponent"
+  }
+}
