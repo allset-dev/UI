@@ -1,8 +1,6 @@
 import { render } from 'react-dom';
 
-const App = (props: { children: string }) => {
-  const asd = '';
-
+const App = () => {
   return (
     <>
       <h1>Congrats!</h1>
@@ -11,4 +9,4 @@ const App = (props: { children: string }) => {
   );
 };
 
-render(<App>asd</App>, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
