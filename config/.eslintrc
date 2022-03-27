@@ -21,6 +21,7 @@
   "rules": {
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
+    "@typescript-eslint/no-unused-vars": "error",
     "react/self-closing-comp": [
       "error",
       {

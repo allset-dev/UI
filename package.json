@@ -7,7 +7,8 @@
     "dev": "webpack serve --config ./config/webpack.config.js",
     "fix:eslint": "eslint -c ./config/.eslintrc --ignore-path ./config/.eslintignore ./ --fix",
     "fix:prettier": "prettier --config ./config/.prettierrc --ignore-path ./config/.prettierignore --write \"./**/*.{js,jsx,json,html,scss}\"",
-    "lint": "npm run fix:prettier && npm run fix:eslint"
+    "lint": "npm run fix:prettier && npm run fix:eslint",
+    "preinstall": "chmod ug+x .githooks/*"
   },
   "repository": {
     "type": "git",
