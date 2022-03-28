@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
-PATTERN="^((feature-)?allset-[[:digit:]]{4})|(main)"
+PATTERN="^((feature-)?allset-[[:digit:]]+)|(main)"
 
 if ! [[ "$BRANCH_NAME" =~ $PATTERN ]]; then
   echo "Bad branch name: $BRANCH_NAME, see example: allset-0000,feature-allset-0000"
