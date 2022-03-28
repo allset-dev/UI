@@ -1,0 +1,3 @@
+uses: goshencollege/validate-branch-name@v1.0.1
+with:
+  pattern: "^\[allset-\d{4,}] [A-Z].*"
