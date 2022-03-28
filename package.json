@@ -8,7 +8,8 @@
     "fix:eslint": "eslint -c ./config/.eslintrc --ignore-path ./config/.eslintignore ./ --fix",
     "fix:prettier": "prettier --config ./config/.prettierrc --ignore-path ./config/.prettierignore --write \"./**/*.{js,jsx,json,html,scss}\"",
     "lint": "npm run fix:prettier && npm run fix:eslint",
-    "preinstall": "chmod ug+x config/githooks/*"
+    "preinstall": "npm run configGithooks",
+    "configGithooks": "chmod ug+x config/githooks/* && git config core.hooksPath config/githooks"
   },
   "repository": {
     "type": "git",

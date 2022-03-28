@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
 
-branchPath=$(git symbolic-ref -q HEAD) #Somthing like refs/heads/myBranchName
-branchName=${branchPath##*/}      #Get text behind the last / of the branch path
+BRANCH_PATH=$(git symbolic-ref -q HEAD)
+BRANCH_NAME=${BRANCH_PATH##*/}
+EXCLUDE_REGEX="(main)"
 
-regex="(allset-[0-9]*)"
-
-# check that this is a regular commit
-if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ]
+if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ];
 then
-    if [[ $branchName =~ $regex ]]
+    if ! [[ "$BRANCH_NAME" =~ $EXCLUDE_REGEX ]]
     then
-        # Get the captured portion of the branch name.
-        jiraTicketName="${BASH_REMATCH[1]}"
         commitMessage=`cat $1`
         commitMessageCamelCase=`echo ${commitMessage:0:1} | tr  '[a-z]' '[A-Z]'`${commitMessage:1}
 
-        sed -i.bak -e "1s/^/[$jiraTicketName] /" $1
+        sed -i.bak -e "1s/^/[$BRANCH_NAME] /" $1
     fi
 fi
