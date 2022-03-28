@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
-PATTERN="^((feature-)?allset-[[:digit:]]{4})|(main)"
+PATTERN="^((FEATURE-)?ALLSET-[[:digit:]]{4})|(main)"
 
 if ! [[ "$BRANCH_NAME" =~ $PATTERN ]]; then
-  echo "Bad branch name: $BRANCH_NAME, see example: allset-0000,feature-allset-0000"
+  echo "Bad branch name: $BRANCH_NAME, see example: ALLSET-0000,FEATURE-ALLSET-0000"
 
   git checkout main
   git branch -D $BRANCH_NAME
