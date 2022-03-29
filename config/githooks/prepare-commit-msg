@@ -13,7 +13,7 @@ fi
 if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ]; then
   if ! [[ "$BRANCH_NAME" =~ $EXCLUDE_REGEX ]]; then
     if ! [[ "$COMMIT_MSG" =~ $PATTERN ]]; then
-      sed -i "" "s/\\${COMMIT_MSG:0:1}/[$BRANCH_NAME] $FIRST_LETTER_CAPS/" $1
+      sed -i "" "s/${COMMIT_MSG:0:1}/[$BRANCH_NAME] $FIRST_LETTER_CAPS/" $1
     fi
   fi
 fi

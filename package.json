@@ -4,6 +4,7 @@
   "description": "allset-web-app's beginner UI code base",
   "main": "src/index.js",
   "scripts": {
+    "build": "webpack --mode production --config ./config/webpack.config.js",
     "dev": "webpack serve --config ./config/webpack.config.js",
     "fix:eslint": "eslint -c ./config/.eslintrc --ignore-path ./config/.eslintignore ./ --fix",
     "fix:prettier": "prettier --config ./config/.prettierrc --ignore-path ./config/.prettierignore --write \"./**/*.{js,jsx,json,html,scss}\"",
@@ -37,6 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^5.16.0",
     "@typescript-eslint/parser": "^5.16.0",
     "babel-loader": "8.2.4",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "6.7.1",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.29.4",
