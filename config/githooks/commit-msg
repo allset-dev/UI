@@ -3,6 +3,10 @@ INPUT_FILE=$1
 COMMIT_MSG=`head -n1 $INPUT_FILE`
 PATTERN="^\[allset-[[:digit:]]+] [A-Z].+"
 
+if [ $NO_CHECK ]; then
+  exit 0
+fi
+
 if ! [[ "$COMMIT_MSG" =~ $PATTERN ]]; then
   echo `tput setaf 1`"Bad commit message: $COMMIT_MSG, see example: [allset-0000] Commit message"`tput sgr0`
   exit 1

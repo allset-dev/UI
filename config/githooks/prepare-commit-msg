@@ -4,13 +4,15 @@ BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
 EXCLUDE_REGEX="(main)"
 
-if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ];
-then
-    if ! [[ "$BRANCH_NAME" =~ $EXCLUDE_REGEX ]]
-    then
-        commitMessage=`cat $1`
-        commitMessageCamelCase=`echo ${commitMessage:0:1} | tr  '[a-z]' '[A-Z]'`${commitMessage:1}
+if [ $NO_CHECK ]; then
+  exit 0
+fi
 
-        sed -i.bak -e "1s/^/[$BRANCH_NAME] /" $1
-    fi
+if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ]; then
+  if ! [[ "$BRANCH_NAME" =~ $EXCLUDE_REGEX ]]; then
+    commitMessage=`cat $1`
+    commitMessageCamelCase=`echo ${commitMessage:0:1} | tr  '[a-z]' '[A-Z]'`${commitMessage:1}
+
+    sed -i.bak -e "1s/^/[$BRANCH_NAME] /" $1
+  fi
 fi
