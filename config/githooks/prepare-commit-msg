@@ -11,8 +11,8 @@ fi
 if [ "$COMMIT_SOURCE" = "message" ] || [ -z "$COMMIT_SOURCE" ]; then
   if ! [[ "$BRANCH_NAME" =~ $EXCLUDE_REGEX ]]; then
     commitMessage=`cat $1`
-    commitMessageCamelCase=`echo ${commitMessage:0:1} | tr  '[a-z]' '[A-Z]'`${commitMessage:1}
+    firstLetterCaps=`echo ${commitMessage:0:1} | tr  '[a-z]' '[A-Z]'`
 
-    sed -i.bak -e "1s/^/[$BRANCH_NAME] /" $1
+    sed -i "" "s/${commitMessage:0:1}/[$BRANCH_NAME] $firstLetterCaps/" $1
   fi
 fi
