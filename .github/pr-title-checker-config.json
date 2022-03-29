@@ -4,11 +4,11 @@
     "color": "EEEEEE"
   },
   "CHECKS": {
-    "regexp": "\\[allset-\\d+] [A-Z].+"
+    "regexp": "\\[(epic-)?allset-\\d+] [A-Z].+"
   },
   "MESSAGES": {
     "success": "All OK",
     "failure": "Failing CI test",
-    "notice": ""
+    "notice": "EX: [allset-0000] Commit message or [epic-allset-0000] Commit message"
   }
 }
