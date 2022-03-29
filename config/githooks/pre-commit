@@ -5,14 +5,14 @@ if [[ "$STAGED_FILES" = "" ]]; then
   exit 0
 fi
 
-echo Validating Javascript
+echo `tput setaf 2`Validating Javascript`tput sgr0`
 
 for FILE in $STAGED_FILES
 do
   node_modules/.bin/eslint -c config/.eslintrc --ignore-path config/.eslintignore "$FILE"
 
   if [[ "$?" == 0 ]]; then
-    echo Javascript validation completed!
+    echo `tput setaf 2`Javascript validation completed!`tput sgr0`
   else
     exit 1
   fi
