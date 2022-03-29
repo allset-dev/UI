@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 INPUT_FILE=$1
 COMMIT_MSG=`head -n1 $INPUT_FILE`
-PATTERN="^\[(feature-)?allset-[[:digit:]]+] [A-Z].+"
+PATTERN="^\[allset-[[:digit:]]+] [A-Z].+"
 
 if ! [[ "$COMMIT_MSG" =~ $PATTERN ]]; then
-  echo "Bad commit message: $COMMIT_MSG, see example: [allset-0000] Commit message or [feature-allset-0000] Commit message"
+  echo "Bad commit message: $COMMIT_MSG, see example: [allset-0000] Commit message"
   exit 1
 fi
