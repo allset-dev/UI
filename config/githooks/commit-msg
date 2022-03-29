@@ -4,6 +4,6 @@ COMMIT_MSG=`head -n1 $INPUT_FILE`
 PATTERN="^\[allset-[[:digit:]]+] [A-Z].+"
 
 if ! [[ "$COMMIT_MSG" =~ $PATTERN ]]; then
-  echo "Bad commit message: $COMMIT_MSG, see example: [allset-0000] Commit message"
+  echo `tput setaf 1`"Bad commit message: $COMMIT_MSG, see example: [allset-0000] Commit message"`tput sgr0`
   exit 1
 fi

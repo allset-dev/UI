@@ -4,7 +4,7 @@ BRANCH_NAME=${BRANCH_PATH##*/}
 PATTERN="^((epic-)?allset-[[:digit:]]+)|(main)"
 
 if ! [[ "$BRANCH_NAME" =~ $PATTERN ]]; then
-  echo "Bad branch name: $BRANCH_NAME, see example: allset-0000,epic-allset-0000"
+  echo `tput setaf 1`"Bad branch name: $BRANCH_NAME, see example: allset-0000,epic-allset-0000"`tput sgr0`
 
   git checkout main
   git branch -D $BRANCH_NAME
