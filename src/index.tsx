@@ -4,7 +4,7 @@ const App = () => {
   return (
     <>
       <h1>Congrats!</h1>
-      <h3>You have successfully setup React.JS from scratch</h3>
+      <h3>You have suasdasdccessfully setup React.JS from scratch</h3>
     </>
   );
 };
