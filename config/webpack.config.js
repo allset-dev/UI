@@ -1,16 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const DEVELOPMENT = 'development';
 
 const appRoot = path.join(__dirname, '..');
+const args = process.argv;
+
+const mode =
+  args.find((arg, index) => {
+    if (arg === '--mode') {
+      return args[index + 1];
+    }
+  }) || DEVELOPMENT;
+const devtool = mode === DEVELOPMENT ? 'inline-source-map' : false;
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool,
   entry: path.join(appRoot, 'src', 'index.tsx'),
   output: {
     path: path.join(appRoot, 'build'),
-    filename: 'index.bundle.js',
+    filename: '[name].[contenthash].js',
+    publicPath: '',
   },
-  mode: process.env.NODE_ENV || 'development',
+  mode,
   resolve: {
     // alias: {
     //   lhComponent: path.resolve(__dirname, '../es6/component/index'),
@@ -19,16 +32,22 @@ module.exports = {
     // },
     modules: ['node_modules'],
   },
-  devServer: { static: { directory: path.join(appRoot, 'src') } },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.(ts|tsx)$/,
+        include: path.join(appRoot, 'src'),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+        ],
         exclude: /node_modules/,
       },
       {
         test: /\.(js|jsx)$/,
+        include: path.join(appRoot, 'src'),
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -62,5 +81,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(appRoot, 'public', 'index.html'),
     }),
+    new CleanWebpackPlugin(),
   ],
 };
