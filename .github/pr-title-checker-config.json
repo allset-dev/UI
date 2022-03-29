@@ -8,7 +8,7 @@
   },
   "MESSAGES": {
     "success": "All OK",
-    "failure": "Failing CI test",
-    "notice": "EX: [allset-0000] Commit message or [epic-allset-0000] Commit message"
+    "failure": "Failing PR Title Check, EX: [allset-0000] Commit message or [epic-allset-0000] Commit message",
+    "notice": ""
   }
 }
