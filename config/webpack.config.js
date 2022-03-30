@@ -3,6 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const DEVELOPMENT = 'development';
+const Paths = {
+  REACT_ENTRY: path.join(appRoot, 'src', 'index.tsx'),
+  ROOT_HTML: path.join(appRoot, 'src', 'static', 'index.html'),
+  OUTPUT_PATH: path.join(appRoot, 'build'),
+  COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
+};
+const EXCLUDE_PATH = /node_modules/;
 
 const appRoot = path.join(__dirname, '..');
 const args = process.argv;
@@ -17,9 +24,9 @@ const devtool = mode === DEVELOPMENT ? 'inline-source-map' : false;
 
 module.exports = {
   devtool,
-  entry: path.join(appRoot, 'src', 'index.tsx'),
+  entry: Paths.REACT_ENTRY,
   output: {
-    path: path.join(appRoot, 'build'),
+    path: Paths.OUTPUT_PATH,
     filename: '[name].[contenthash].js',
     publicPath: '',
   },
@@ -36,8 +43,8 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        include: path.join(appRoot, 'src'),
-        exclude: /node_modules/,
+        include: Paths.COMPILE_JS_TS_INCLUDE,
+        exclude: EXCLUDE_PATH,
         use: [
           {
             loader: 'ts-loader',
@@ -46,8 +53,8 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        include: path.join(appRoot, 'src'),
-        exclude: /node_modules/,
+        include: Paths.COMPILE_JS_TS_INCLUDE,
+        exclude: EXCLUDE_PATH,
         use: {
           loader: 'babel-loader',
           options: {
@@ -78,7 +85,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(appRoot, 'public', 'index.html'),
+      template: Paths.ROOT_HTML,
     }),
     new CleanWebpackPlugin(),
   ],
