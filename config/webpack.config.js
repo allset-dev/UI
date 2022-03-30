@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const appRoot = path.join(__dirname, '..');
+const args = process.argv;
+
 const DEVELOPMENT = 'development';
 const Paths = {
   REACT_ENTRY: path.join(appRoot, 'src', 'index.tsx'),
@@ -10,9 +13,6 @@ const Paths = {
   COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
 };
 const EXCLUDE_PATH = /node_modules/;
-
-const appRoot = path.join(__dirname, '..');
-const args = process.argv;
 
 const mode =
   args.find((arg, index) => {
