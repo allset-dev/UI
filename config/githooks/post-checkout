@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
-PATTERN="^((epic-)?allset-[[:digit:]]+)|(main)"
+EPIC_REGEX="^(epic-)?allset-[[:digit:]]+"
+PATTERN="($EPIC_REGEX)|(main)|(^$)"
 
 if [ $NO_CHECK ]; then
   exit 0
