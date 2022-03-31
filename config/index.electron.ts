@@ -20,6 +20,11 @@ const createMainWindow = () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  // mainWindow.webContents.on('new-window', (event, url) => {
+  //   event.preventDefault();
+  //   mainWindow.loadURL(url);
+  // });
 };
 
 app.whenReady().then(() => {
