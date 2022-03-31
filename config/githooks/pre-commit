@@ -11,15 +11,21 @@ fi
 
 echo `tput setaf 2`Validating Javascript`tput sgr0`
 
+LINT_ERROR=false
+
 for FILE in $STAGED_FILES
 do
   node_modules/.bin/eslint -c config/.eslintrc --ignore-path config/.eslintignore "$FILE"
 
-  if [[ "$?" == 0 ]]; then
-    echo `tput setaf 2`Javascript validation completed!`tput sgr0`
-  else
-    exit 1
+  if ! [[ "$?" == 0 ]]; then
+    LINT_ERROR=true
   fi
 done
+
+if [[ $LINT_ERROR == true ]]; then
+  exit 1
+else
+  echo `tput setaf 2`Javascript validation completed!`tput sgr0`
+fi
 
 exit $?

@@ -1,9 +1,17 @@
+/* eslint-disable @typescript-eslint/no-var-requires, no-undef */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const appRoot = path.join(__dirname, '..');
 const args = process.argv;
+const argsObj = {};
+
+args.forEach((arg, index) => {
+  if (arg.startsWith('--')) {
+    argsObj[arg.slice(2, arg.length)] = args[index + 1];
+  }
+});
 
 const DEVELOPMENT = 'development';
 const Paths = {
@@ -13,17 +21,16 @@ const Paths = {
   COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
 };
 const EXCLUDE_PATH = /node_modules/;
-
-const mode =
-  args.find((arg, index) => {
-    if (arg === '--mode') {
-      return args[index + 1];
-    }
-  }) || DEVELOPMENT;
+const mode = argsObj.mode || DEVELOPMENT;
+const port = argsObj.port;
 const devtool = mode === DEVELOPMENT ? 'inline-source-map' : false;
 
 module.exports = {
   devtool,
+  devServer: {
+    compress: true,
+    port,
+  },
   entry: Paths.REACT_ENTRY,
   output: {
     path: Paths.OUTPUT_PATH,
