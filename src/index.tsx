@@ -1,14 +1,28 @@
 import { createRoot } from 'react-dom/client';
+import { useEffect } from 'react';
+
+import './index.scss';
 
 const App = () => {
+  useEffect(() => {
+    window.addEventListener('beforeunload', function (event) {
+      event.preventDefault();
+      event.returnValue = '';
+    });
+  }, []);
+
   return (
-    <>
-      <h1>Congrats!</h1>
-      <h3>You have successfully setup React.JS from scratch</h3>
-      <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
-        Go to ABOUT
-      </a>
-    </>
+    <div className="as-app">
+      <iframe
+        allowFullScreen
+        frameBorder={0}
+        height="100%"
+        id="iframe"
+        src="https://www.2embed.ru/embed/tmdb/tv?id=1418&s=11&e=8"
+        width="100%"
+      />
+      {/* <div className="as-app-content" /> */}
+    </div>
   );
 };
 

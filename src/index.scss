@@ -1,0 +1,24 @@
+body {
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.as-app {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+  &-content {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+  }
+}

@@ -4,7 +4,7 @@
     "color": "EEEEEE"
   },
   "CHECKS": {
-    "regexp": "\\[(epic-)?allset-\\d+] [A-Z].+"
+    "regexp": "\\[(epic-)?allset-\\d+]+ [A-Z].+"
   },
   "MESSAGES": {
     "success": "All OK",
