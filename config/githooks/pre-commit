@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
+BRANCH_PATH=$(git symbolic-ref -q HEAD)
+BRANCH_NAME=${BRANCH_PATH##*/}
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$')
+REBASE_REGEX="(^$)"
+
+echo "BRANCH_NAME: $BRANCH_NAME"
 
 if [ $NO_CHECK ]; then
   exit 0
