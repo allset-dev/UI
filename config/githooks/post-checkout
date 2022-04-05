@@ -4,7 +4,7 @@ BRANCH_NAME=${BRANCH_PATH##*/}
 BRANCH_REGEX="^(feature-)?allset-[[:digit:]]+"
 PATTERN="($BRANCH_REGEX)|(main)|(^$)"
 
-if [ $NO_CHECK ]; then
+if [ $NC ]; then
   exit 0
 fi
 

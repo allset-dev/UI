@@ -5,11 +5,11 @@ STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|
 FEATURE_BRANCH_REGEX="^feature-.*"
 
 if [[ "$BRANCH_NAME" =~ $FEATURE_BRANCH_REGEX ]]; then
-  echo "You can't commit on feature branch"
+  echo `tput setaf 1`"You can't commit on feature branch"`tput sgr0`
   exit 1
 fi
 
-if [ $NO_CHECK ]; then
+if [ $NC ]; then
   exit 0
 fi
 

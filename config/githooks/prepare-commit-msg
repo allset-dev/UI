@@ -7,7 +7,7 @@ COMMIT_MSG=`cat $1`
 FIRST_LETTER="${COMMIT_MSG:0:1}"
 FIRST_LETTER_CAPS=`echo ${COMMIT_MSG:0:1} | tr  '[a-z]' '[A-Z]'`
 
-if [ $NO_CHECK ]; then
+if [ $NC ]; then
   exit 0
 fi
 

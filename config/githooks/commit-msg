@@ -2,7 +2,7 @@
 COMMIT_MSG=`cat $1`
 PATTERN="^(\[allset-[[:digit:]]+])+ [A-Z].+"
 
-if [ $NO_CHECK ]; then
+if [ $NC ]; then
   exit 0
 fi
 
