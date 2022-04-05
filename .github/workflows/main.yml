@@ -7,6 +7,6 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: allset-web-app/githooks@v1.6
+        uses: allset-web-app/githooks@v1.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
