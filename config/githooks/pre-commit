@@ -4,7 +4,7 @@ BRANCH_NAME=${BRANCH_PATH##*/}
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$')
 FEATURE_BRANCH_REGEX="^feature-.*"
 
-if [["$BRANCH_NAME" =~ $FEATURE_BRANCH_REGEX]]; then
+if [[ "$BRANCH_NAME" =~ $FEATURE_BRANCH_REGEX ]]; then
   echo "You can't commit on feature branch"
   exit 1
 fi
