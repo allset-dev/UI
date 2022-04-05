@@ -2,9 +2,12 @@
 BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$')
-REBASE_REGEX="(^$)"
+FEATURE_BRANCH_REGEX="^feature-.*"
 
-echo "BRANCH_NAME: $BRANCH_NAME"
+if [["$BRANCH_NAME" =~ $FEATURE_BRANCH_REGEX]]; then
+  echo "You can't commit on feature branch"
+  exit 1
+fi
 
 if [ $NO_CHECK ]; then
   exit 0
