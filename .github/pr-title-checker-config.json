@@ -4,11 +4,11 @@
     "color": "EEEEEE"
   },
   "CHECKS": {
-    "regexp": "\\[(epic-)?allset-\\d+]+ [A-Z].+"
+    "regexp": "\\[(feature-)?allset-\\d+]+ [A-Z].+"
   },
   "MESSAGES": {
     "success": "All OK",
-    "failure": "Failing PR Title Check, EX: [allset-0000] Commit message or [epic-allset-0000] Commit message",
+    "failure": "Failing PR Title Check, EX: [allset-0000] Commit message or [feature-allset-0000] Commit message",
     "notice": ""
   }
 }
