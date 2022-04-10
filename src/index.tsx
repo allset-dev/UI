@@ -1,5 +1,5 @@
-import { createRoot } from 'react-dom/client';
 import { useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 
 import './index.scss';
 
@@ -18,7 +18,7 @@ const App = () => {
         frameBorder={0}
         height="100%"
         id="iframe"
-        src="https://www.2embed.ru/embed/tmdb/tv?id=1418&s=12&e=1"
+        src="https://tamilhdbox.com/cook-with-comali-season-3-10-04-2022/"
         width="100%"
       />
       {/* <div className="as-app-content" /> */}
