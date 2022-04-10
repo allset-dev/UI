@@ -45,6 +45,7 @@ module.exports = {
     //   lhUtil: path.resolve(__dirname, '../es6/util/index'),
     // },
     modules: ['node_modules'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
     rules: [

@@ -11,7 +11,7 @@ const createMainWindow = () => {
       nodeIntegration: false,
     },
   });
-  const startURL = 'http://localhost:3000';
+  const startURL = 'http://localhost:3001';
 
   mainWindow.loadURL(startURL);
 
