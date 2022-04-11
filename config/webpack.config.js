@@ -1,17 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires, no-undef */
 const path = require('path');
+const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const appRoot = path.join(__dirname, '..');
-const args = process.argv;
-const argsObj = {};
-
-args.forEach((arg, index) => {
-  if (arg.startsWith('--')) {
-    argsObj[arg.slice(2, arg.length)] = args[index + 1];
-  }
-});
 
 const DEVELOPMENT = 'development';
 const Paths = {
@@ -21,8 +14,9 @@ const Paths = {
   COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
 };
 const EXCLUDE_PATH = /node_modules/;
-const mode = argsObj.mode || DEVELOPMENT;
-const port = argsObj.port;
+const mode = process.env.MODE || DEVELOPMENT;
+const port = process.env.PORT;
+
 const devtool = mode === DEVELOPMENT ? 'inline-source-map' : false;
 
 module.exports = {
@@ -96,5 +90,11 @@ module.exports = {
       template: Paths.ROOT_HTML,
     }),
     new CleanWebpackPlugin(),
+    // NOTE: (Webpack) Making process.env available to application. You can access process.env.MODE in applicaiton.
+    new DefinePlugin({
+      'process.env': JSON.stringify({
+        MODE: mode,
+      }),
+    }),
   ],
 };

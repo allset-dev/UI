@@ -1,0 +1,7 @@
+{
+  "name": "allset",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

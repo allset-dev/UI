@@ -4,16 +4,19 @@
   "description": "allset UI code base",
   "main": "config/index.electron.ts",
   "scripts": {
-    "build:prod": "webpack --mode production --config config/webpack.config.js",
+    "build": "MODE=\"production\" webpack --config config/webpack.config.js",
     "build:dev": "webpack --config config/webpack.config.js",
     "clearPort": "npx kill-port 3001",
     "configGithooks": "chmod ug+x config/githooks/* && git config core.hooksPath config/githooks",
-    "dev": "npm run clearPort && webpack-dev-server --config config/webpack.config.js --port 3001",
+    "dev": "npm run clearPort && PORT=\"3001\" webpack-dev-server --config config/webpack.config.js",
     "dev:app": "concurrently \"npm run dev\" \"wait-on http://localhost:3001 && electron .\"",
+    "dev:android": "npx cap run android",
+    "dev:ios": "npx cap run ios",
     "fix:eslint": "eslint -c config/.eslintrc --ignore-path config/.eslintignore ./ --fix",
     "fix:prettier": "prettier --config config/.prettierrc --ignore-path config/.prettierignore --write \"./**/*.{js,jsx,json,html,scss}\"",
     "lint": "npm run fix:prettier && npm run fix:eslint",
-    "preinstall": "npm run configGithooks"
+    "preinstall": "npm run configGithooks",
+    "setup": "ionic capacitor add android && ionic capacitor add ios"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,9 @@
   },
   "homepage": "https://github.com/allset-inc/UI#readme",
   "dependencies": {
+    "@capacitor/android": "3.4.3",
+    "@capacitor/core": "^3.4.3",
+    "@capacitor/ios": "3.4.3",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
@@ -36,6 +42,8 @@
     "@babel/core": "7.17.9",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
+    "@capacitor/cli": "^3.4.3",
+    "@ionic/cli": "^6.19.0",
     "@types/electron": "1.6.10",
     "@types/react": "18.0.1",
     "@types/react-dom": "18.0.0",
