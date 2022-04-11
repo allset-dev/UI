@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
-EPIC_REGEX="^(epic-)?allset-[[:digit:]]+"
-PATTERN="($EPIC_REGEX)|(main)|(^$)"
+BRANCH_REGEX="^(feature-)?allset-[[:digit:]]+"
+PATTERN="($BRANCH_REGEX)|(main)|(^$)"
 
 if [ $NO_CHECK ]; then
   exit 0
 fi
 
 if ! [[ "$BRANCH_NAME" =~ $PATTERN ]]; then
-  echo `tput setaf 1`"Bad branch name: $BRANCH_NAME, see example: allset-0000,epic-allset-0000"`tput sgr0`
+  echo `tput setaf 1`"Bad branch name: $BRANCH_NAME, see example: allset-0000,feature-allset-0000"`tput sgr0`
 
   git checkout main
   git branch -D $BRANCH_NAME

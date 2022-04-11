@@ -1,0 +1,16 @@
+name: 'Cheking PR Title'
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: allset-web-app/githooks@v1.28
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHECK: 'title'
