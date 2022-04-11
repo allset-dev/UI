@@ -16,7 +16,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.options": {
     // NOTE:(ESLINT) Adding path for eslint config files, we don't need this if config files are in root of the aplication.
-    "configFile": "./config/.eslintrc",
+    "overrideConfigFile": "./config/.eslintrc",
     // NOTE:(ESLINT) Adding path for eslint ignore files, we don't need this if config files are in root of the aplication.
     "ignorePath": "./config/.eslintignore"
   },

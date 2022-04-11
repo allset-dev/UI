@@ -18,7 +18,7 @@ const App = () => {
         frameBorder={0}
         height="100%"
         id="iframe"
-        src="https://tamilhdbox.com/cook-with-comali-season-3-10-04-2022/"
+        src="https://tamilhdbox.com/vijay-udan-nerukku-ner-actor-vijays-interview-10-04-2022-sun-tv-show/"
         width="100%"
       />
       {/* <div className="as-app-content" /> */}
