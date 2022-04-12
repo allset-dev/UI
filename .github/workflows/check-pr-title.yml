@@ -10,7 +10,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: allset-inc/gitactions@v1.34
+      - uses: allset-inc/gitactions@v1.36
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHECK: 'title'
