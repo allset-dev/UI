@@ -9,7 +9,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: allset-inc/gitactions@v1.39
+      - uses: allset-inc/gitactions@v1.40
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHECK: 'desc'
