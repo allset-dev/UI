@@ -1,29 +1,11 @@
-import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
+
+import { App as ASApp } from './bundle/app';
 
 import './index.scss';
 
 const App = () => {
-  useEffect(() => {
-    window.addEventListener('beforeunload', function (event) {
-      event.preventDefault();
-      event.returnValue = '';
-    });
-  }, []);
-
-  return (
-    <div className="as-app">
-      <iframe
-        allowFullScreen
-        frameBorder={0}
-        height="100%"
-        id="iframe"
-        src="https://www.2embed.ru/embed/tmdb/tv?id=1418&s=12&e=7"
-        width="100%"
-      />
-      {/* <div className="as-app-content" /> */}
-    </div>
-  );
+  return <ASApp />;
 };
 
 const root = createRoot(document.getElementById('root'));
