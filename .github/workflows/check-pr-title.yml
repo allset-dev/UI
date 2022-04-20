@@ -1,18 +1,20 @@
-name: 'Cheking PR Title'
+# NOTE:(Git action types) https://frontside.com/blog/2020-05-26-github-actions-pull_request/
+
+name: 'Checking PR Title'
 on:
   pull_request_target:
     types:
       - opened
       - edited
-      - synchronize
+      - reopened
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: allset-inc/gitactions@v1.40
+      - uses: allset-inc/gitactions@v1.41
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CHECK: 'title'
+          CHECK: 'checkPR'
           JIRA_HOST_URL: 'https://logichub.atlassian.net'
           JIRA_PROJECT_NAME: 'allset'

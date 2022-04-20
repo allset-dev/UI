@@ -90,7 +90,7 @@ module.exports = {
       template: Paths.ROOT_HTML,
     }),
     new CleanWebpackPlugin(),
-    // NOTE: (Webpack) Making process.env available to application. You can access process.env.MODE in applicaiton.
+    // NOTE:(Webpack) Making process.env available to application. You can access process.env.MODE in applicaiton.
     new DefinePlugin({
       'process.env': JSON.stringify({
         MODE: mode,
