@@ -1,4 +1,5 @@
 import { useRef, useEffect, useMemo } from 'react';
+import { isEqual } from 'utils';
 
 export function useComponentWillMount(willMountCallback: () => () => void) {
   // NOTE:(REACT) using useRef because useState will re-render the component.
@@ -20,11 +21,7 @@ export function useComponentWillMount(willMountCallback: () => () => void) {
 function useDeepCompareMemoize(value: any) {
   const ref: { current: any } = useRef();
 
-  if (typeof value === 'object') {
-    if (JSON.stringify(value) === JSON.stringify(ref.current)) {
-      ref.current = value;
-    }
-  } else if (value === ref.current) {
+  if (!isEqual(value, ref.current)) {
     ref.current = value;
   }
 

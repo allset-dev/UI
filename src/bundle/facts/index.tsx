@@ -6,6 +6,7 @@ import './index.scss';
 
 export function Facts() {
   const [factQuery, setFactQuery] = useState('');
+  const [factQueryError, setFactQueryError] = useState('');
   const [fact, setFact] = useState('');
 
   useEffect(handleGetRandomFact, []);
@@ -52,7 +53,18 @@ export function Facts() {
   }
 
   function handleOnFactQueryChange(event: ChangeEvent<HTMLInputElement>) {
-    setFactQuery(event?.target?.value || '');
+    const updatedFactQuery = event?.target?.value || '';
+    const updatedFactQueryLength = updatedFactQuery.length;
+
+    setFactQuery(updatedFactQuery);
+
+    if (updatedFactQueryLength > 10) {
+      setFactQueryError('Max 10 characters');
+    } else if (updatedFactQueryLength === 0) {
+      setFactQueryError('Fact query required');
+    } else {
+      setFactQueryError('');
+    }
   }
 
   return (
@@ -79,12 +91,18 @@ export function Facts() {
         <ASForm className="as-facts-main-form" onSubmit={handleOnFactQuerySubmit}>
           <ASAllInput
             className="as-facts-main-form-input"
+            error={factQueryError}
             id="fact-query"
             inputType="input"
             label="Search for Facts"
             onChange={handleOnFactQueryChange}
           />
-          <ASButton className="as-facts-main-form-submit" text="Search" type="submit" />
+          <ASButton
+            disabled={Boolean(!factQuery || factQueryError)}
+            className="as-facts-main-form-submit"
+            text="Search"
+            type="submit"
+          />
         </ASForm>
       </main>
       <footer className="as-facts-footer">

@@ -1,8 +1,35 @@
 .as-button {
-  width: fit-content;
+  background: #fff;
+  border-radius: 40px;
+  border: 1px solid green;
+  color: green;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  height: 24px;
   margin-right: $spacing-sm;
+  outline: none;
+  text-align: center;
+  text-shadow: 0;
+  transition: all 0.25s ease;
+  width: fit-content;
 
   &:last-child {
     margin-right: 0;
+  }
+
+  &:hover:not(:disabled) {
+    color: white;
+    background: green;
+  }
+
+  &:active:not(:disabled) {
+    letter-spacing: 2px;
+  }
+
+  &:disabled {
+    color: black;
+    background: lightgray;
+    cursor: not-allowed;
   }
 }

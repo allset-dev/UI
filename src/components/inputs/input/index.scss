@@ -1,0 +1,17 @@
+.as-input {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: $spacing-xs;
+  border-radius: 4px;
+
+  &-wrapper {
+    position: relative;
+  }
+
+  &-error {
+    &.as-text {
+      color: red;
+    }
+  }
+}
