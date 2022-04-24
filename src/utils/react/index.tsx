@@ -1,27 +1,27 @@
-// import { useState, useRef, useCallback } from 'react';
+import { useState } from 'react';
 
-// export function useFallbackState(
-//   defaultValue: any,
-//   parentState?: any,
-//   setParentState?: React.Dispatch<any>
-// ) {
-//   const parentStateUndefined = parentState === undefined;
+export function useFallbackState(
+  defaultValue?: any,
+  parentState?: any,
+  setParentState?: React.Dispatch<any>
+) {
+  const parentStateUndefined = parentState === undefined;
 
-//   const [state, setState] = useState(parentStateUndefined ? defaultValue : parentState);
+  const [state, setState] = useState(parentStateUndefined ? defaultValue : parentState);
 
-//   const localState = parentStateUndefined ? state : parentState;
+  const localState = parentStateUndefined ? state : parentState;
 
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//   function setLocalState(latestState: any) {
-//     setState(latestState);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function setLocalState(latestState: any) {
+    setState(latestState);
 
-//     if (typeof setParentState === 'function') {
-//       setParentState(latestState);
-//     }
-//   }
+    if (typeof setParentState === 'function') {
+      setParentState(latestState);
+    }
+  }
 
-//   return [localState, setLocalState];
-// }
+  return [localState, setLocalState];
+}
 
 // /**
 //  * same as use state, but we get a third param to get current value.

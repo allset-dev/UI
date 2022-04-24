@@ -1,5 +1,6 @@
 import { ASAllInput, ASText, ASForm, ASButton } from 'components';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { useApi } from 'utils';
 
 import { FactsApi } from './api';
 import './index.scss';
@@ -9,44 +10,44 @@ export function Facts() {
   const [factQueryError, setFactQueryError] = useState('');
   const [fact, setFact] = useState('');
 
-  useEffect(handleGetRandomFact, []);
+  const { fetch: fetchRandomFacts } = useApi({
+    api: FactsApi.getRandomFact,
+    onSuccess: (response) => {
+      setFact(response?.data?.value);
+    },
+    onError: () => {
+      setFact('Funny fact chucknorris API Failed');
+    },
+  });
 
-  function handleGetRandomFact() {
-    FactsApi.getRandomFact()
-      .then((response) => {
-        setFact(response?.data?.value);
-      })
-      .catch(() => {
-        setFact('Funny fact chucknorris API Failed');
-      });
-  }
+  const { fetch: fetchSearchResult } = useApi({
+    api: FactsApi.fetchSearchResult,
+    onSuccess: (response) => {
+      let newFact = '';
 
-  function handleFetchSearchResult(query: string) {
-    FactsApi.fetchSearchResult({ query })
-      .then((response) => {
-        let newFact = '';
+      const result = response?.data?.result;
+      const resultLength = result.length;
+      if (resultLength) {
+        const randomFactIndex = Math.floor(Math.random() * resultLength);
+        newFact = result[randomFactIndex]?.value;
+      } else {
+        newFact = 'No Facts with given query';
+      }
 
-        const result = response?.data?.result;
-        const resultLength = result.length;
-        if (resultLength) {
-          const randomFactIndex = Math.floor(Math.random() * resultLength);
-          newFact = result[randomFactIndex]?.value;
-        } else {
-          newFact = 'No Facts with given query';
-        }
+      setFact(newFact);
+    },
+    onError: () => {
+      setFact('Funny fact chucknorris API Failed');
+    },
+  });
 
-        setFact(newFact);
-      })
-      .catch(() => {
-        setFact('Funny fact chucknorris API Failed');
-      });
-  }
+  useEffect(fetchRandomFacts, []);
 
   function handleOnFactQuerySubmit(event: FormEvent) {
     event.preventDefault();
 
     if (factQuery) {
-      handleFetchSearchResult(factQuery);
+      fetchSearchResult({ query: factQuery });
     }
 
     return false;

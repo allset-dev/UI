@@ -1,4 +1,5 @@
-import { useRef, useEffect, useMemo } from 'react';
+import { AxiosPromise, AxiosResponse } from 'axios';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import { isEqual } from 'utils';
 
 export function useComponentWillMount(willMountCallback: () => () => void) {
@@ -40,4 +41,45 @@ export function useDeepCompareEffect(callback: () => void, dependencies: any[]) 
  */
 export function useDeepCompareMemo(callback: () => void, dependencies: any[]) {
   return useMemo(callback, dependencies.map(useDeepCompareMemoize));
+}
+
+const DefaultError = { isError: false, errorMsg: '' };
+
+interface useApiProps {
+  api: (...args: any) => AxiosPromise<any>;
+  onSuccess?: (response: AxiosResponse<any>) => void;
+  onError?: (error: any) => void;
+}
+
+export function useApi(props: useApiProps) {
+  const { api, onSuccess, onError } = props;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [{ isError, errorMsg }, setIsError] = useState(DefaultError);
+
+  function fetch(...args: any) {
+    setIsLoading(true);
+    setIsError(DefaultError);
+
+    api(...args)
+      .then((response) => {
+        if (onSuccess) {
+          onSuccess(response);
+        }
+      })
+      .catch((error) => {
+        setIsError({ isError: true, errorMsg: error });
+        if (onError) {
+          onError(error);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
+  function cancel() {
+    //
+  }
+  return { fetch, cancel, isL: isLoading, isE: isError, errorMsg };
 }
