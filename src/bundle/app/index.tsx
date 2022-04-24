@@ -1,7 +1,7 @@
-import { WebView } from '../web-view';
+import { Facts } from 'bundle/facts';
 
 import './index.scss';
 
 export function App() {
-  return <WebView />;
+  return <Facts />;
 }

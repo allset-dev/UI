@@ -1,0 +1,35 @@
+//   Size in px based on 16px base
+//
+//   Spacing Scale
+//   ==========================================
+//   4xs  ||  2px
+//   2xs  ||  4px
+//   xs   ||  8px
+//   sm   ||  12px
+//   md   ||  16px
+//   lg   ||  20px
+//   xl   ||  24px
+//   2xl  ||  28px
+//   3xl  ||  32px
+//   4xl  ||  36px
+//   5xl  ||  40px
+//   6xl  ||  44px
+//   7xl  ||  48px
+//   8xl  ||  64px
+
+$spacing-baseline: 1rem;
+
+$spacing-4xs: $spacing-baseline * 0.125;
+$spacing-2xs: $spacing-baseline * 0.25;
+$spacing-xs: $spacing-baseline * 0.5;
+$spacing-sm: $spacing-baseline * 0.75;
+$spacing-md: $spacing-baseline;
+$spacing-lg: $spacing-baseline * 1.25;
+$spacing-xl: $spacing-baseline * 1.5;
+$spacing-2xl: $spacing-baseline * 1.75;
+$spacing-3xl: $spacing-baseline * 2;
+$spacing-4xl: $spacing-baseline * 2.25;
+$spacing-5xl: $spacing-baseline * 2.5;
+$spacing-6xl: $spacing-baseline * 2.75;
+$spacing-7xl: $spacing-baseline * 3;
+$spacing-8xl: $spacing-baseline * 4;

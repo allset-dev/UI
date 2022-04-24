@@ -5,6 +5,13 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "./dist/",
-    "target": "es5"
+    "target": "es5",
+    "baseUrl": "src",
+    "esModuleInterop": true
+    // "paths": {
+    //   "bundle/*": ["./bundle/*"],
+    //   "asComponents": ["./components/index"],
+    //   "asUtils": ["./utils/index"]
+    // }
   }
 }

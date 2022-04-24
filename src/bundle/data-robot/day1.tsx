@@ -99,7 +99,7 @@ export function DataRobotInterviewDay1() {
       .join('');
   }
 
-  // hackerrank equal stack question
+  // equal stack question
 
   function equalStacks(stacks: number[][]) {
     let equalStackHeight = 0;

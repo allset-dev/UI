@@ -1,0 +1,51 @@
+.as-facts {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  &-header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: $spacing-lg 0;
+
+    &-image {
+      @include untilMediaType($type: 'landscapePhone') {
+        display: none;
+      }
+    }
+  }
+
+  &-main {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: $spacing-lg;
+    margin-top: 100px;
+    margin-bottom: auto;
+    width: 100%;
+    flex-wrap: wrap-reverse;
+
+    &-left {
+      margin: $spacing-lg;
+      width: 360px;
+    }
+
+    &-form {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      margin: $spacing-lg;
+      align-items: center;
+
+      &-submit {
+        margin-top: $spacing-sm;
+      }
+    }
+  }
+
+  &-footer {
+    margin-top: $spacing-md;
+  }
+}

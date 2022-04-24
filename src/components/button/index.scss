@@ -1,0 +1,8 @@
+.as-button {
+  width: fit-content;
+  margin-right: $spacing-sm;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

@@ -34,11 +34,11 @@ module.exports = {
   mode,
   resolve: {
     // alias: {
-    //   lhComponent: path.resolve(__dirname, '../es6/component/index'),
-    //   lhConstants: path.resolve(__dirname, '../es6/bundle/application/constants'),
-    //   lhUtil: path.resolve(__dirname, '../es6/util/index'),
+    //   bundle: path.resolve(__dirname, '../src/bundle'),
+    //   asComponents: path.resolve(__dirname, '../src/components/index'),
+    //   asUtils: path.resolve(__dirname, '../es6/utils/index'),
     // },
-    modules: ['node_modules'],
+    modules: ['node_modules', 'src'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
@@ -77,7 +77,16 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `@import "src/styles/global-styles/index.scss";`,
+            },
+          },
+        ],
       },
       {
         test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,

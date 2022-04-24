@@ -1,6 +1,9 @@
 // NOTE:(VSCODE) Availalbe vscode settings.json variables https://code.visualstudio.com/docs/editor/variables-reference.
 {
-  // NOTE:(VSCODE) On save eslint, prettier and all other configured extensions will be executed the saved file/files.
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2,
+  // NOTE:(VSCODE) On save eslint, prettier and all other configured extensions will be executed on the saved file/files.
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
