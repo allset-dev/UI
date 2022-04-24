@@ -1,5 +1,6 @@
 import { AxiosPromise } from 'axios';
 import { render, act, RenderResult } from '@testing-library/react';
+import { expect } from '@jest/globals';
 
 import { Facts } from './index';
 import { FactsApi } from './api';

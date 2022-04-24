@@ -7,11 +7,11 @@
     "outDir": "./dist/",
     "target": "es5",
     "baseUrl": "src",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["cypress", "jest"]
     // "paths": {
-    //   "bundle/*": ["./bundle/*"],
-    //   "asComponents": ["./components/index"],
-    //   "asUtils": ["./utils/index"]
+    //   "fixtures/*": ["../config/cy/fixtures/*"]
     // }
-  }
+  },
+  "exclude": ["node_modules", "build"]
 }

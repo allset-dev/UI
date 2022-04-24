@@ -2,3 +2,5 @@ node_modules
 build
 android
 ios
+config/cy/examples
+config/cy/videos
