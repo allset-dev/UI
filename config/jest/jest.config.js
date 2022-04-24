@@ -14,4 +14,5 @@ module.exports = {
   },
   rootDir: process.cwd(),
   testPathIgnorePatterns: ['node_modules'],
+  testRegex: '(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$',
 };
