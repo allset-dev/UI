@@ -1,0 +1,9 @@
+- Have architected a project, of how a production application should be, instead of just writing all code in one single file.
+- Have cut down code into multiple reusable components, and have introduced a single entry point for components and utils.
+- Instead of using create-react-app. Have created an app from scratch using webpack, babel, jest and cypress.
+- Have architected the project in a way that unit, automation test, styles and api methods are in the same folder as the bundle.
+- Have moved most config files to the config folder and made the root of the codebase look simple.
+- Have created a fully typescript codebase. Even UT and automation scripts can be written in ts
+- Have created scss variables and mixins and globally injected in all inline styles, using webpack additionalData option.
+- Application can be run as a web app, desktop app using electron, android and iphone app using capacitor/ionic.
+- Used BEM css methodology for classnames.
