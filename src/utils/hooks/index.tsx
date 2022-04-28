@@ -1,5 +1,6 @@
-import { AxiosPromise, AxiosResponse } from 'axios';
 import { useRef, useEffect, useMemo, useState } from 'react';
+import { AxiosPromise, AxiosResponse } from 'axios';
+
 import { isEqual } from 'utils';
 
 export function useComponentWillMount(willMountCallback: () => () => void) {
@@ -54,32 +55,39 @@ interface useApiProps {
 export function useApi(props: useApiProps) {
   const { api, onSuccess, onError } = props;
 
+  const axiosCancelToken = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [{ isError, errorMsg }, setIsError] = useState(DefaultError);
 
   function fetch(...args: any) {
-    setIsLoading(true);
-    setIsError(DefaultError);
+    if (isLoading) {
+      cancel();
+    } else {
+      setIsLoading(true);
+      setIsError(DefaultError);
+    }
 
-    api(...args)
+    axiosCancelToken.current = new AbortController();
+
+    api(axiosCancelToken.current.signal, ...args)
       .then((response) => {
+        setIsLoading(false);
         if (onSuccess) {
           onSuccess(response);
         }
       })
       .catch((error) => {
+        setIsLoading(false);
         setIsError({ isError: true, errorMsg: error });
         if (onError) {
           onError(error);
         }
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   }
 
   function cancel() {
-    //
+    axiosCancelToken.current.abort();
   }
+
   return { fetch, cancel, isL: isLoading, isE: isError, errorMsg };
 }

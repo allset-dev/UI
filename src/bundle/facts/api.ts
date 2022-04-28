@@ -1,10 +1,16 @@
 import { API } from 'utils';
 
 export const FactsApi = {
-  getRandomFact() {
-    return API.get('https://api.chucknorris.io/jokes/random');
+  getRandomFact(abortSignal: AbortSignal) {
+    return API.get('https://api.chucknorris.io/jokes/random', {
+      signal: abortSignal,
+    });
   },
-  fetchSearchResult({ query }: { query: string }) {
-    return API.get(`https://api.chucknorris.io/jokes/search?query=${query}`);
+  fetchSearchResult(abortSignal: AbortSignal, props: { query: string }) {
+    const { query } = props;
+
+    return API.get(`https://api.chucknorris.io/jokes/search?query=${query}`, {
+      signal: abortSignal,
+    });
   },
 };
