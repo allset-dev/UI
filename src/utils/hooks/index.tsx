@@ -46,15 +46,9 @@ export function useDeepCompareMemo(callback: () => void, dependencies: any[]) {
 
 const DefaultError = { isError: false, errorMsg: '' };
 
-interface useApiProps {
-  api: (...args: any) => AxiosPromise<any>;
-  onSuccess?: (response: AxiosResponse<any>) => void;
-  onError?: (error: any) => void;
-}
+type useApiProps = (...args: any) => AxiosPromise<any>;
 
-export function useApi(props: useApiProps) {
-  const { api, onSuccess, onError } = props;
-
+export function useApi(api: useApiProps) {
   const axiosCancelToken = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [{ isError, errorMsg }, setIsError] = useState(DefaultError);
@@ -69,20 +63,20 @@ export function useApi(props: useApiProps) {
 
     axiosCancelToken.current = new AbortController();
 
-    api(axiosCancelToken.current.signal, ...args)
-      .then((response) => {
-        setIsLoading(false);
-        if (onSuccess) {
-          onSuccess(response);
-        }
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setIsError({ isError: true, errorMsg: error });
-        if (onError) {
-          onError(error);
-        }
-      });
+    return new Promise(
+      (resolve: (value: AxiosResponse<any, any>) => void, reject: (error: any) => void) => {
+        api(axiosCancelToken.current.signal, ...args)
+          .then((response) => {
+            setIsLoading(false);
+            resolve(response);
+          })
+          .catch((error) => {
+            setIsLoading(false);
+            setIsError({ isError: true, errorMsg: error });
+            reject(error);
+          });
+      }
+    );
   }
 
   function cancel() {

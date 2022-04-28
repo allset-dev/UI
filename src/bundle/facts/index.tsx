@@ -10,44 +10,41 @@ export function Facts() {
   const [factQueryError, setFactQueryError] = useState('');
   const [fact, setFact] = useState('');
 
-  const { fetch: fetchRandomFacts } = useApi({
-    api: FactsApi.getRandomFact,
-    onSuccess: (response) => {
-      setFact(response?.data?.value);
-    },
-    onError: () => {
-      setFact('Funny fact chucknorris API Failed');
-    },
-  });
+  const { fetch: fetchRandomFacts } = useApi(FactsApi.getRandomFact);
+  const { fetch: fetchSearchResult } = useApi(FactsApi.fetchSearchResult);
 
-  const { fetch: fetchSearchResult } = useApi({
-    api: FactsApi.fetchSearchResult,
-    onSuccess: (response) => {
-      let newFact = '';
-
-      const result = response?.data?.result;
-      const resultLength = result.length;
-      if (resultLength) {
-        const randomFactIndex = Math.floor(Math.random() * resultLength);
-        newFact = result[randomFactIndex]?.value;
-      } else {
-        newFact = 'No Facts with given query';
-      }
-
-      setFact(newFact);
-    },
-    onError: () => {
-      setFact('Funny fact chucknorris API Failed');
-    },
-  });
-
-  useEffect(fetchRandomFacts, []);
+  useEffect(() => {
+    fetchRandomFacts()
+      .then((response) => {
+        setFact(response?.data?.value);
+      })
+      .catch(() => {
+        setFact('Funny fact chucknorris API Failed');
+      });
+  }, []);
 
   function handleOnFactQuerySubmit(event: FormEvent) {
     event.preventDefault();
 
     if (factQuery) {
-      fetchSearchResult({ query: factQuery });
+      fetchSearchResult({ query: factQuery })
+        .then((response) => {
+          let newFact = '';
+
+          const result = response?.data?.result;
+          const resultLength = result.length;
+          if (resultLength) {
+            const randomFactIndex = Math.floor(Math.random() * resultLength);
+            newFact = result[randomFactIndex]?.value;
+          } else {
+            newFact = 'No Facts with given query';
+          }
+
+          setFact(newFact);
+        })
+        .catch(() => {
+          setFact('Funny fact chucknorris API Failed');
+        });
     }
 
     return false;
