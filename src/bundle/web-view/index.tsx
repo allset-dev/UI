@@ -17,7 +17,7 @@ export function WebView() {
         frameBorder={0}
         height="100%"
         id="iframe"
-        src={`https://tamilhdbox.com/cook-with-comali-season-3-17-04-2022/`}
+        src={`https://www.tamildhool.net/vijay-tv/vijay-tv-show/cook-with-comali-season-3/cook-with-comali-season-3-30-04-2022/`}
         width="100%"
       />
     </div>
