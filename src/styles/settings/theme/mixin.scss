@@ -1,0 +1,37 @@
+// Surface color alpha levels
+$as-color-strong: 1;
+$as-color-normal: 0.7;
+$as-color-helptext: 0.45;
+$as-color-light: 0.24;
+$as-color-disabled: 0.16;
+
+// Border color alpha levels
+$as-border-normal: 0.08;
+
+// Interactiveness alpha levels
+$as-border-hover: 0.04;
+$as-border-active: 0.1;
+
+@mixin createTheme($level0, $level1, $level2, $level3, $level4, $colorCode, $primary, $onPrimary) {
+  $primary-cc: getRgb($primary);
+
+  --as-surface-level-0: #{$level0};
+  --as-surface-level-1: #{$level1};
+  --as-surface-level-2: #{$level2};
+  --as-surface-level-3: #{$level3};
+  --as-surface-level-4: #{$level4};
+
+  --as-text-strong: rgba(#{$colorCode}, #{$as-color-strong});
+  --as-text-normal: rgba(#{$colorCode}, #{$as-color-normal});
+  --as-text-helptext: rgba(#{$colorCode}, #{$as-color-helptext});
+  --as-text-light: rgba(#{$colorCode}, #{$as-color-light});
+  --as-text-disabled: rgba(#{$colorCode}, #{$as-color-disabled});
+
+  --as-border-normal: rgba(#{$colorCode}, #{$as-border-normal});
+  --as-border-hover: rgba(#{$colorCode}, #{$as-border-hover});
+  --as-border-active: rgba(#{$colorCode}, #{$as-border-active});
+
+  --as-primary: rgb(#{$primary-cc});
+  --as-on-primary: #{$onPrimary};
+  --as-primary-border-normal: rgba(#{$primary-cc}, 0.4);
+}

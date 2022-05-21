@@ -1,40 +1,41 @@
 @mixin overrideTagStyles($tag: 'p') {
   #{$tag} {
-    margin: $spacing-sm 0;
+    margin: $spacing-12 0;
     @content;
   }
 }
 
 @include overrideTagStyles($tag: 'p') {
-  font-weight: $font-weight-regular;
+  font-size: $font-size-16;
+  font-weight: $font-weight-400;
 }
 
 @include overrideTagStyles($tag: 'h1') {
-  font-size: $font-size-4xl;
-  font-weight: $font-weight-bold;
+  font-size: $font-size-28;
+  font-weight: $font-weight-700;
 }
 
 @include overrideTagStyles($tag: 'h2') {
-  font-size: $font-size-3xl;
-  font-weight: $font-weight-medium;
+  font-size: $font-size-24;
+  font-weight: $font-weight-600;
 }
 
 @include overrideTagStyles($tag: 'h3') {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-medium;
+  font-size: $font-size-20;
+  font-weight: $font-weight-600;
 }
 
 @include overrideTagStyles($tag: 'h4') {
-  font-size: $font-size-md;
-  font-weight: $font-weight-medium;
+  font-size: $font-size-16;
+  font-weight: $font-weight-600;
 }
 
 @include overrideTagStyles($tag: 'h5') {
-  font-size: $font-size-sm;
-  font-weight: $font-weight-regular;
+  font-size: $font-size-14;
+  font-weight: $font-weight-500;
 }
 
 @include overrideTagStyles($tag: 'h6') {
-  font-size: $font-size-xs;
-  font-weight: $font-weight-regular;
+  font-size: $font-size-12;
+  font-weight: $font-weight-500;
 }

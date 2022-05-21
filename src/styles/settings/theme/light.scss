@@ -1,0 +1,20 @@
+@mixin asThemeLight() {
+  @include createTheme(
+    $level0: #ffffff,
+    $level1: #f6f7f8,
+    $level2: #f0f1f2,
+    $level3: #e6e7e8,
+    $level4: #0b1928,
+    $primary: #1456cb,
+    $onPrimary: #ffffff,
+    $colorCode: (
+      11,
+      25,
+      40,
+    )
+  );
+}
+
+.as-theme-light {
+  @include asThemeLight;
+}

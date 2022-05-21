@@ -1,7 +1,7 @@
-import { Facts } from 'bundle/facts';
+import HomePage from 'bundle/home-page';
 
 import './index.scss';
 
 export function App() {
-  return <Facts />;
+  return <HomePage />;
 }

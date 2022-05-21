@@ -1,0 +1,29 @@
+@mixin componentSize() {
+  &.as-large {
+    height: 44px;
+  }
+
+  &.as-medium {
+    height: 34px;
+  }
+
+  &.as-small {
+    height: 24px;
+  }
+}
+
+@mixin componentColor() {
+  &.as-primary {
+    background-color: var(--as-primary);
+    color: var(--as-on-primary);
+  }
+
+  &.as-secondary {
+    background-color: transparent;
+    border: 1px solid var(--as-border-normal);
+
+    &:disabled {
+      color: var(--as-text-disabled);
+    }
+  }
+}

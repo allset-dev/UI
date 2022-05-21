@@ -3,7 +3,7 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "./dist/",
     "target": "es5",
     "baseUrl": "src",

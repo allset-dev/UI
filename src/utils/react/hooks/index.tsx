@@ -85,3 +85,45 @@ export function useApi(api: useApiProps) {
 
   return { fetch, cancel, isL: isLoading, isE: isError, errorMsg };
 }
+
+/**
+ * same as use state, but we get a third param to get current value. This will be useful while working with settimeout, eventHandlers, promises and axios api calls.
+ */
+export function useRefState<T>(defaultValue: T): [T, (updatedValue: T) => void, () => T] {
+  const ref = useRef(defaultValue);
+  const [state, setState] = useState(defaultValue);
+
+  function setStateFn(updatedValue: any) {
+    ref.current = updatedValue;
+    setState(updatedValue);
+  }
+
+  function getValueFn() {
+    return ref.current;
+  }
+
+  return [state, setStateFn, getValueFn];
+}
+
+export function useFallbackState(
+  defaultValue?: any,
+  parentState?: any,
+  setParentState?: React.Dispatch<any>
+) {
+  const parentStateUndefined = parentState === undefined;
+
+  const [state, setState] = useState(parentStateUndefined ? defaultValue : parentState);
+
+  const localState = parentStateUndefined ? state : parentState;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function setLocalState(latestState: any) {
+    setState(latestState);
+
+    if (typeof setParentState === 'function') {
+      setParentState(latestState);
+    }
+  }
+
+  return [localState, setLocalState];
+}
