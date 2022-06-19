@@ -44,39 +44,39 @@ export function useDeepCompareMemo(callback: () => void, dependencies: any[]) {
   return useMemo(callback, dependencies.map(useDeepCompareMemoize));
 }
 
-const DefaultError = { isError: false, errorMsg: '' };
+const NoErrorObj = { isError: false, errorMsg: '' };
 
 type useApiProps = (...args: any) => AxiosPromise<any>;
+type fetchResponce = (value: AxiosResponse<any, any>) => void;
+type fetchReject = (error: any) => void;
 
 export function useApi(api: useApiProps) {
   const axiosCancelToken = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [{ isError, errorMsg }, setIsError] = useState(DefaultError);
+  const [{ isError, errorMsg }, setIsError] = useState(NoErrorObj);
 
   function fetch(...args: any) {
     if (isLoading) {
       cancel();
     } else {
       setIsLoading(true);
-      setIsError(DefaultError);
+      setIsError(NoErrorObj);
     }
 
     axiosCancelToken.current = new AbortController();
 
-    return new Promise(
-      (resolve: (value: AxiosResponse<any, any>) => void, reject: (error: any) => void) => {
-        api(axiosCancelToken.current.signal, ...args)
-          .then((response) => {
-            setIsLoading(false);
-            resolve(response);
-          })
-          .catch((error) => {
-            setIsLoading(false);
-            setIsError({ isError: true, errorMsg: error });
-            reject(error);
-          });
-      }
-    );
+    return new Promise((res: fetchResponce, rej: fetchReject) => {
+      api(axiosCancelToken.current.signal, ...args)
+        .then((response) => {
+          setIsLoading(false);
+          res(response);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          setIsError({ isError: true, errorMsg: error });
+          rej(error);
+        });
+    });
   }
 
   function cancel() {
@@ -86,10 +86,11 @@ export function useApi(api: useApiProps) {
   return { fetch, cancel, isL: isLoading, isE: isError, errorMsg };
 }
 
+type UseRefStateReturns<T> = [T, (updatedValue: T) => void, () => T];
 /**
  * same as use state, but we get a third param to get current value. This will be useful while working with settimeout, eventHandlers, promises and axios api calls.
  */
-export function useRefState<T>(defaultValue: T): [T, (updatedValue: T) => void, () => T] {
+export function useRefState<T>(defaultValue: T): UseRefStateReturns<T> {
   const ref = useRef(defaultValue);
   const [state, setState] = useState(defaultValue);
 

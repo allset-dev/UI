@@ -1,12 +1,12 @@
 import { ASInput, ASInputProps } from './input';
 
-interface ASInputType extends ASInputProps {
+interface ASInputTypeInput extends ASInputProps {
   inputType: 'input' | undefined | '';
 }
 
-type ASAllInput = ASInputType;
+type ASAllInputProps = ASInputTypeInput;
 
-export function ASAllInput(props: ASAllInput) {
+export function ASAllInput(props: ASAllInputProps) {
   const { inputType, ...restProps } = props;
 
   switch (inputType) {
