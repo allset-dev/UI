@@ -26,5 +26,7 @@
   // NOTE:(PRETTIER) Adding path for prettier config files, we don't need this if config files are in root of the aplication.
   "prettier.configPath": "./config/.prettierrc",
   // NOTE:(PRETTIER) Adding path for prettier ignore files, we don't need this if config files are in root of the aplication.
-  "prettier.ignorePath": "./config/.prettierignore"
+  "prettier.ignorePath": "./config/.prettierignore",
+  "ionic.externalAddress": true,
+  "ionic.previewInEditor": true
 }

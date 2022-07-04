@@ -1,7 +1,9 @@
-import HomePage from 'bundle/home-page';
+import { useSetAppPreference } from 'utils';
 
 import './index.scss';
 
 export function App() {
-  return <HomePage />;
+  useSetAppPreference();
+
+  return <div>108j6805</div>;
 }

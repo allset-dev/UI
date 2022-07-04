@@ -1,7 +1,6 @@
 import { useRef, useEffect, useMemo, useState } from 'react';
 import { AxiosPromise, AxiosResponse } from 'axios';
-
-import { isEqual } from 'utils';
+import { convertRgb2Hex, isEqual, isMobile, setStatusAndNavBarStyles } from 'utils';
 
 export function useComponentWillMount(willMountCallback: () => () => void) {
   // NOTE:(REACT) using useRef because useState will re-render the component.
@@ -127,4 +126,17 @@ export function useFallbackState(
   }
 
   return [localState, setLocalState];
+}
+
+export function useSetMobilePreference() {
+  if (isMobile) {
+    const cssVariable = getComputedStyle(document.body).getPropertyValue('background-color');
+    const bgColor = convertRgb2Hex(cssVariable);
+
+    setStatusAndNavBarStyles(bgColor);
+  }
+}
+
+export function useSetAppPreference() {
+  useSetMobilePreference();
 }

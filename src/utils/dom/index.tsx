@@ -16,3 +16,11 @@ export function exitFullScreen() {
     //
   }
 }
+
+export function convertRgb2Hex(s: string) {
+  const rgbArray = s.match(/[0-9]+/g);
+
+  return rgbArray.reduce((a, b) => {
+    return a + (Number(b) | 256).toString(16).slice(1);
+  }, '#');
+}
