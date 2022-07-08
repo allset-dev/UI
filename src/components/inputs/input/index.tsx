@@ -5,7 +5,7 @@ import './index.scss';
 
 export interface ASInputProps
   extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-  label?: string;
+  label: string;
   error?: string;
 }
 
@@ -13,7 +13,7 @@ export function ASInput(props: ASInputProps) {
   const { className, label, id, error, ...restProps } = props;
 
   return (
-    <label className={CN('as-input-wrapper', error && 'as-input-error')} title={label} htmlFor={id}>
+    <label className={CN('as-input-wrapper', error && 'as-input-error')} htmlFor={id}>
       {label && (
         <ASText className="as-input-label" tag="span">
           {label}

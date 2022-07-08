@@ -1,12 +1,20 @@
 .as-input {
+  background: var(--as-surface-level-1);
+  border-radius: 8px;
+  border: 2px solid var(--as-surface-level-1);
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  font-size: inherit;
+  outline: 0;
   padding: $spacing-8;
-  border-radius: 4px;
 
-  &-wrapper {
-    position: relative;
+  &:focus {
+    border-color: var(--as-focus);
+    background: var(--as-surface-level-0);
+  }
+
+  &:hover {
+    background: var(--as-surface-level-0);
   }
 
   &-error {

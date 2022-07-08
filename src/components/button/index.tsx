@@ -8,15 +8,22 @@ export interface ASButtonProps
     HTMLButtonElement
   > {
   text?: string;
+  buttonStyle?: 'primary' | 'secondary' | 'primary-solid';
 }
 
 export function ASButton(props: ASButtonProps) {
-  const { className = '', children, text = '', ...restProps } = props;
+  const {
+    className = '',
+    children,
+    text = '',
+    buttonStyle = 'primary-solid',
+    ...restProps
+  } = props;
 
   const buttonChildren = children || text;
 
   return (
-    <button className={CN('as-button', className)} {...restProps}>
+    <button className={CN('as-button', `as-${buttonStyle}`, className)} {...restProps}>
       {buttonChildren}
     </button>
   );

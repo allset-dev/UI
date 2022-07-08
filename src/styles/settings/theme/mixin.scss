@@ -9,11 +9,31 @@ $as-color-disabled: 0.16;
 $as-border-normal: 0.08;
 
 // Interactiveness alpha levels
-$as-border-hover: 0.04;
-$as-border-active: 0.1;
+$as-border-hover: 0.15;
+$as-border-active: 1;
 
-@mixin createTheme($level0, $level1, $level2, $level3, $level4, $colorCode, $primary, $onPrimary) {
-  $primary-cc: getRgb($primary);
+@mixin createTheme(
+  $level0,
+  $level1,
+  $level2,
+  $level3,
+  $level4,
+  $text,
+  $primary,
+  $primaryHover,
+  $primaryActive,
+  $primaryText,
+  $borderNormal,
+  $borderHover,
+  $borderActive,
+  $secondary,
+  $secondaryHover,
+  $secondaryActive,
+  $secondaryText,
+  $focusColor
+) {
+  $text-rgb: getRgb($text);
+  $primary-rgb: getRgb($primary);
 
   --as-surface-level-0: #{$level0};
   --as-surface-level-1: #{$level1};
@@ -21,17 +41,27 @@ $as-border-active: 0.1;
   --as-surface-level-3: #{$level3};
   --as-surface-level-4: #{$level4};
 
-  --as-text-strong: rgba(#{$colorCode}, #{$as-color-strong});
-  --as-text-normal: rgba(#{$colorCode}, #{$as-color-normal});
-  --as-text-helptext: rgba(#{$colorCode}, #{$as-color-helptext});
-  --as-text-light: rgba(#{$colorCode}, #{$as-color-light});
-  --as-text-disabled: rgba(#{$colorCode}, #{$as-color-disabled});
+  --as-text-strong: rgba(#{$text-rgb}, #{$as-color-strong});
+  --as-text-normal: rgba(#{$text-rgb}, #{$as-color-normal});
+  --as-text-helptext: rgba(#{$text-rgb}, #{$as-color-helptext});
+  --as-text-light: rgba(#{$text-rgb}, #{$as-color-light});
+  --as-text-disabled: rgba(#{$text-rgb}, #{$as-color-disabled});
 
-  --as-border-normal: rgba(#{$colorCode}, #{$as-border-normal});
-  --as-border-hover: rgba(#{$colorCode}, #{$as-border-hover});
-  --as-border-active: rgba(#{$colorCode}, #{$as-border-active});
+  --as-border-normal: #{$borderNormal};
+  --as-border-hover: #{$borderHover};
+  --as-border-active: #{$borderActive};
 
-  --as-primary: rgb(#{$primary-cc});
-  --as-on-primary: #{$onPrimary};
-  --as-primary-border-normal: rgba(#{$primary-cc}, 0.4);
+  --as-primary: #{$primary};
+  --as-primary-hover: #{$primaryHover};
+  --as-primary-active: #{$primaryActive};
+  --as-primary-text: #{$primaryText};
+  --as-primary-shadow-1: 0px 1px 8px rgba(#{getRgb($primary)}, 0.5);
+
+  --as-secondary: #{$secondary};
+  --as-secondary-hover: #{$secondaryHover};
+  --as-secondary-active: #{$secondaryActive};
+  --as-secondary-text: #{$secondaryText};
+  --as-secondary-shadow-1: 0px 1px 8px rgba(#{getRgb($secondary)}, 0.5);
+
+  --as-focus: #{$focusColor};
 }

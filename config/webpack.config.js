@@ -12,6 +12,7 @@ const Paths = {
   ROOT_HTML: path.join(appRoot, 'src', 'static', 'index.html'),
   OUTPUT_PATH: path.join(appRoot, 'build'),
   COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
+  PUBLIC_PATH: '',
 };
 const EXCLUDE_PATH = /node_modules/;
 const mode = process.env.MODE || DEVELOPMENT;
@@ -29,7 +30,7 @@ module.exports = {
   output: {
     path: Paths.OUTPUT_PATH,
     filename: '[name].[contenthash].js',
-    publicPath: '',
+    publicPath: Paths.PUBLIC_PATH,
   },
   mode,
   resolve: {

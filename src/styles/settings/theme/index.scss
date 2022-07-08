@@ -1,3 +1,64 @@
-@import "./dark.scss";
-@import "./light.scss";
-@import "./system-theme.scss";
+@import './mixin.scss';
+
+@mixin asThemeDark {
+  @include createTheme(
+    $level0: #000000,
+    $level1: #181818,
+    $level2: #212121,
+    $level3: #2b2b2b,
+    $level4: #ffffff,
+    $text: #ffffff,
+    $primary: #ff7300,
+    $primaryHover: #833b00,
+    $primaryActive: #833b00,
+    $primaryText: #c8cacd,
+    $borderNormal: #ffffff,
+    $borderHover: #ffffff,
+    $borderActive: #ffffff,
+    $secondary: #ff7300,
+    $secondaryHover: #833b00,
+    $secondaryActive: #833b00,
+    $secondaryText: #c8cacd,
+    $focusColor: #1456cb
+  );
+}
+
+@mixin asThemeLight() {
+  @include createTheme(
+    $level0: #fafdf8,
+    $level1: #f0f1f2,
+    $level2: #d8d9db,
+    $level3: #d5d6d7,
+    $level4: #0b1928,
+    $text: #0b1928,
+    $primary: #1456cb,
+    $primaryHover: #0c357b,
+    $primaryActive: #0c357b,
+    $primaryText: #fff,
+    $borderNormal: #0b1928,
+    $borderHover: #0b1928,
+    $borderActive: #0b1928,
+    $secondary: #1456cb,
+    $secondaryHover: #0c357b,
+    $secondaryActive: #0c357b,
+    $secondaryText: #000,
+    $focusColor: #ff7300
+  );
+}
+
+.as-theme-dark {
+  @include asThemeDark;
+}
+
+.as-theme-light {
+  @include asThemeLight;
+}
+
+.as-system-theme {
+  @media (prefers-color-scheme: light) {
+    @include asThemeLight;
+  }
+  @media (prefers-color-scheme: dark) {
+    @include asThemeDark;
+  }
+}

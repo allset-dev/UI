@@ -1,0 +1,37 @@
+.asb-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  &-avatar {
+    font-size: 10em;
+    color: var(--as-surface-level-4);
+    margin-bottom: 50px;
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-input {
+    width: 250px;
+  }
+
+  &-button {
+    min-width: 200px;
+    width: 100%;
+
+    &-group {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+}

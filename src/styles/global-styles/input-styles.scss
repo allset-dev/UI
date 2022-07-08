@@ -1,29 +1,80 @@
 @mixin componentSize() {
   &.as-large {
-    height: 44px;
+    height: 0.8em;
   }
 
   &.as-medium {
-    height: 34px;
+    height: 1em;
   }
 
   &.as-small {
-    height: 24px;
+    height: 2em;
   }
 }
 
-@mixin componentColor() {
+@mixin componentStyle() {
   &.as-primary {
-    background-color: var(--as-primary);
-    color: var(--as-on-primary);
+    background-color: var(--as-surface-level-1);
+    border-color: var(--as-primary);
+    color: var(--as-primary);
+
+    @include componentHoverStyles(
+      $bgColor: var(--as-surface-level-0),
+      $borderColor: var(--as-focus),
+      $boxShadow: var(--as-primary-shadow-1)
+    );
+
+    &-solid {
+      background-color: var(--as-primary);
+      border-color: transparent;
+      color: var(--as-primary-text);
+
+      @include componentHoverStyles(
+        $bgColor: var(--as-primary-hover),
+        $borderColor: var(--as-focus),
+        $boxShadow: var(--as-primary-shadow-1)
+      );
+    }
   }
 
   &.as-secondary {
-    background-color: transparent;
-    border: 1px solid var(--as-border-normal);
+    background-color: var(--as-surface-level-1);
+    border-color: var(--as-secondary);
+    color: var(--as-secondary);
 
-    &:disabled {
-      color: var(--as-text-disabled);
+    @include componentHoverStyles(
+      $bgColor: var(--as-surface-level-0),
+      $borderColor: var(--as-focus),
+      $boxShadow: var(--as-secondary-shadow-1)
+    );
+
+    &-solid {
+      background-color: var(--as-secondary);
+      border-color: transparent;
+      color: var(--as-secondary-text);
+
+      @include componentHoverStyles(
+        $bgColor: var(--as-secondary-hover),
+        $borderColor: var(--as-focus),
+        $boxShadow: var(--as-secondary-shadow-1)
+      );
     }
+  }
+}
+
+@mixin componentHoverStyles($bgColor, $borderColor, $boxShadow) {
+  outline: 0;
+
+  &:hover {
+    background-color: #{$bgColor};
+  }
+
+  &:focus-within:not(:active) {
+    background-color: #{$bgColor};
+    border-color: #{$borderColor};
+  }
+
+  &:active {
+    box-shadow: #{$boxShadow};
   }
 }
