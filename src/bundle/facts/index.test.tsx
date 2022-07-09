@@ -1,9 +1,9 @@
-import { AxiosPromise } from 'axios';
-import { RenderResult, act, render } from '@testing-library/react';
 import { expect } from '@jest/globals';
+import { RenderResult, act, render } from '@testing-library/react';
+import { AxiosPromise } from 'axios';
 
-import { Facts } from './index';
 import { FactsApi } from './api';
+import { Facts } from './index';
 
 const fact = 'Funny fact chucknorris API Failed';
 

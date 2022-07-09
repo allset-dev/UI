@@ -16,3 +16,5 @@ export function ASAllInput(props: ASAllInputProps) {
     }
   }
 }
+
+export * from './input';

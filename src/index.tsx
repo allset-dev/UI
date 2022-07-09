@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client';
 
 import { App as ASApp } from './bundle/app';
-
 import './index.scss';
 
 const App = () => {

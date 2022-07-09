@@ -1,6 +1,6 @@
-import { isPlatform } from '@ionic/react';
 import { StatusBar } from '@capacitor/status-bar';
 import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
+import { isPlatform } from '@ionic/react';
 
 export const isAndroid = isPlatform('android');
 export const isIos = isPlatform('ios');

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useRefState } from 'utils';
 
 export default function HomePage() {

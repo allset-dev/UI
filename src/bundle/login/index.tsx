@@ -1,9 +1,8 @@
-import { ASButton } from 'components';
-import { ASInput } from 'components/inputs/input';
+import { ASButton, ASInput } from 'components';
 import { Pillaiyar } from 'static/svgs/pillaiyar';
 import { useApi } from 'utils';
-import { LoginApi } from './api';
 
+import { LoginApi } from './api';
 import './index.scss';
 
 export default function Login() {

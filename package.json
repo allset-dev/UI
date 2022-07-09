@@ -12,7 +12,7 @@
     "start:a": "npx cap open android",
     "start:ios": "npx cap open ios",
     "fix:eslint": "eslint -c config/.eslintrc --ignore-path config/.eslintignore ./ --fix",
-    "fix:prettier": "prettier --config config/.prettierrc --ignore-path config/.prettierignore --write \"./**/*.{js,jsx,json,html,scss}\"",
+    "fix:prettier": "prettier --config config/.prettierrc --ignore-path config/.prettierignore --write \"./**/*.{js,jsx,ts,tsx,json,html,scss}\"",
     "lint": "npm run fix:prettier && npm run fix:eslint",
     "preinstall": "npm run configGithooks",
     "setup": "ionic capacitor add android && ionic capacitor add ios",
