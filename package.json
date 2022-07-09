@@ -6,9 +6,8 @@
   "scripts": {
     "build": "MODE=\"production\" webpack --config config/webpack.config.js",
     "build:dev": "webpack --config config/webpack.config.js",
-    "clearPort": "npx kill-port 3001",
     "configGithooks": "chmod ug+x config/githooks/* && git config core.hooksPath config/githooks",
-    "start": "npm run clearPort && PORT=\"3001\" webpack-dev-server --config config/webpack.config.js",
+    "start": "webpack-dev-server --config config/webpack.config.js",
     "start:app": "concurrently \"npm start\" \"wait-on http://localhost:3001 && electron .\"",
     "start:a": "npx cap open android",
     "start:ios": "npx cap open ios",
@@ -69,6 +68,7 @@
     "concurrently": "7.2.2",
     "css-loader": "6.7.1",
     "cypress": "10.3.0",
+    "dotenv": "^16.0.1",
     "electron": "19.0.8",
     "eslint": "8.19.0",
     "eslint-plugin-cypress": "2.12.1",

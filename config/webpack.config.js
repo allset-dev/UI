@@ -3,10 +3,11 @@ const path = require('path');
 const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { NODE_ENV, IS_DEV, PROXY, PORT } = require('./env-variables');
+const { killPort } = require('./kill-port');
 
 const appRoot = path.join(__dirname, '..');
 
-const DEVELOPMENT = 'development';
 const Paths = {
   REACT_ENTRY: path.join(appRoot, 'src', 'index.tsx'),
   ROOT_HTML: path.join(appRoot, 'src', 'static', 'index.html'),
@@ -15,16 +16,16 @@ const Paths = {
   PUBLIC_PATH: '',
 };
 const EXCLUDE_PATH = /node_modules/;
-const mode = process.env.MODE || DEVELOPMENT;
-const port = process.env.PORT;
 
-const devtool = mode === DEVELOPMENT ? 'inline-source-map' : false;
+if (IS_DEV) {
+  killPort();
+}
 
 module.exports = {
-  devtool,
+  devtool: IS_DEV ? 'inline-source-map' : false,
   devServer: {
     compress: true,
-    port,
+    port: PORT,
   },
   entry: Paths.REACT_ENTRY,
   output: {
@@ -32,7 +33,7 @@ module.exports = {
     filename: '[name].[contenthash].js',
     publicPath: Paths.PUBLIC_PATH,
   },
-  mode,
+  mode: NODE_ENV,
   resolve: {
     // alias: {
     //   bundle: path.resolve(__dirname, '../src/bundle'),
@@ -100,10 +101,10 @@ module.exports = {
       template: Paths.ROOT_HTML,
     }),
     new CleanWebpackPlugin(),
-    // NOTE:(Webpack) Making process.env available to application. You can access process.env.MODE in applicaiton.
+    // NOTE:(Webpack) Making process.env available to application. You can access process.env. in applicaiton.
     new DefinePlugin({
       'process.env': JSON.stringify({
-        MODE: mode,
+        PROXY,
       }),
     }),
   ],

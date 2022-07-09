@@ -7,6 +7,7 @@
   font-size: inherit;
   outline: 0;
   padding: $spacing-8;
+  color: inherit;
 
   &:focus {
     border-color: var(--as-focus);

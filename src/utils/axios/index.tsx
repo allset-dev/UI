@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from 'axios';
 
 interface CustomAxiosConfig extends AxiosRequestConfig {
-  skipBaseURL?: boolean;
   skipDataStringify?: boolean;
 }
 
@@ -30,20 +29,15 @@ function getAxiosApis(baseURL: string) {
 }
 
 function getAxiosConfig(props: CustomAxiosConfig): AxiosRequestConfig {
-  const {
-    baseURL,
-    data = {},
-    method,
-    skipBaseURL = false,
-    skipDataStringify = false,
-    url,
-    ...restConfig
-  } = props;
+  const { baseURL, data = {}, method, skipDataStringify = false, url, ...restConfig } = props;
+
+  const isOutsideSource = url.startsWith('http') || url.startsWith('https');
+  const addedBackSlash = url.startsWith('/') ? url : `/${url}`;
 
   return {
-    baseURL: skipBaseURL ? '' : baseURL,
+    baseURL,
     method,
-    url,
+    url: isOutsideSource ? url : `/api${addedBackSlash}`,
 
     // header
     headers: { 'Content-Type': 'application/json' },
@@ -69,4 +63,4 @@ function handleOnReject(error: any) {
   }
 }
 
-export const API = getAxiosApis('');
+export const API = getAxiosApis(process.env.PROXY || '');

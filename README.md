@@ -15,20 +15,20 @@
 
 ## Start web app locally
 
-- Run `npm run dev`
+- Run `npm start`
 - Go to `https://localhost:3001`
 
 ## Start electron app locally
 
-- Run `npm run dev:app`
+- Run `npm start:app`
 
 ## Start android app locally
 
-- Run `npm run dev:android`
+- Run `npm start:a`
 
 ## Start ios app locally
 
-- Run `npm run dev:ios`
+- Run `npm start:ios`
 
 ## Testing
 
