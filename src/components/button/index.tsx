@@ -13,17 +13,18 @@ export interface ASButtonProps
 
 export function ASButton(props: ASButtonProps) {
   const {
-    className = '',
-    children,
-    text = '',
     buttonStyle = 'primary-solid',
+    children,
+    className = '',
+    text = '',
+    type = 'button',
     ...restProps
   } = props;
 
   const buttonChildren = children || text;
 
   return (
-    <button className={CN('as-button', `as-${buttonStyle}`, className)} {...restProps}>
+    <button className={CN('as-button', `as-${buttonStyle}`, className)} type={type} {...restProps}>
       {buttonChildren}
     </button>
   );

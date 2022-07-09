@@ -1,4 +1,5 @@
-import { useRef, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
 import { AxiosPromise, AxiosResponse } from 'axios';
 import { convertRgb2Hex, isEqual, isMobile, setStatusAndNavBarStyles } from 'utils';
 

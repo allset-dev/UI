@@ -37,7 +37,9 @@ export default function Login() {
           id="password"
         />
         <div className="asb-login-button-group">
-          <ASButton className="asb-login-button">Login</ASButton>
+          <ASButton className="asb-login-button" type="submit">
+            Login
+          </ASButton>
           <ASButton className="asb-login-button" buttonStyle="primary">
             I need help
           </ASButton>
