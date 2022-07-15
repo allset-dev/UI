@@ -6,7 +6,7 @@ export const isAndroid = isPlatform('android');
 export const isIos = isPlatform('ios');
 export const isMobile = isAndroid || isIos;
 
-export async function setStatusAndNavBarStyles(bgColor: string) {
-  await StatusBar.setBackgroundColor({ color: bgColor });
-  await NavigationBar.setColor({ color: bgColor });
+export async function setStatusAndNavBarStyles() {
+  await StatusBar.setOverlaysWebView({ overlay: true });
+  await NavigationBar.hide();
 }

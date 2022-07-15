@@ -13,7 +13,7 @@ const Paths = {
   ROOT_HTML: path.join(appRoot, 'src', 'static', 'index.html'),
   OUTPUT_PATH: path.join(appRoot, 'build'),
   COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
-  PUBLIC_PATH: '',
+  PUBLIC_PATH: '/',
 };
 const EXCLUDE_PATH = /node_modules/;
 

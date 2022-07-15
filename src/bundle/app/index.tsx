@@ -1,4 +1,4 @@
-import Login from 'bundle/login';
+import HomePage from 'bundle/home-page';
 import { useSetAppPreference } from 'utils';
 
 import './index.scss';
@@ -6,5 +6,5 @@ import './index.scss';
 export function App() {
   useSetAppPreference();
 
-  return <Login />;
+  return <HomePage />;
 }

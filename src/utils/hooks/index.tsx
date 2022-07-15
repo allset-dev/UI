@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { AxiosPromise, AxiosResponse } from 'axios';
-import { convertRgb2Hex, isEqual, isMobile, setStatusAndNavBarStyles } from 'utils';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { isEqual, isMobile, setStatusAndNavBarStyles } from 'utils';
 
 export function useComponentWillMount(willMountCallback: () => () => void) {
   // NOTE:(REACT) using useRef because useState will re-render the component.
@@ -131,13 +133,11 @@ export function useFallbackState(
 
 export function useSetMobilePreference() {
   if (isMobile) {
-    const cssVariable = getComputedStyle(document.body).getPropertyValue('background-color');
-    const bgColor = convertRgb2Hex(cssVariable);
-
-    setStatusAndNavBarStyles(bgColor);
+    setStatusAndNavBarStyles();
   }
 }
 
 export function useSetAppPreference() {
+  gsap.registerPlugin(ScrollTrigger);
   useSetMobilePreference();
 }

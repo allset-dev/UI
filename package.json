@@ -46,6 +46,7 @@
     "@ionic-native/core": "5.36.0",
     "@ionic/react": "6.1.13",
     "axios": "0.27.2",
+    "gsap": "^3.10.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
