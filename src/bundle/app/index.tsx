@@ -4,8 +4,6 @@ import { useSetAppPreference } from 'utils';
 
 import { GlobalModals } from 'bundle/global-modals';
 
-import './index.scss';
-
 import { AppLogoutRoutes } from './routes';
 
 export function App() {

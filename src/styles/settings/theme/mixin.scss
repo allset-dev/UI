@@ -40,28 +40,23 @@ $as-border-active: 1;
   --as-surface-level-2: #{$level2};
   --as-surface-level-3: #{$level3};
   --as-surface-level-4: #{$level4};
-
   --as-text-strong: rgba(#{$text-rgb}, #{$as-color-strong});
   --as-text-normal: rgba(#{$text-rgb}, #{$as-color-normal});
   --as-text-helptext: rgba(#{$text-rgb}, #{$as-color-helptext});
   --as-text-light: rgba(#{$text-rgb}, #{$as-color-light});
   --as-text-disabled: rgba(#{$text-rgb}, #{$as-color-disabled});
-
   --as-border-normal: #{$borderNormal};
   --as-border-hover: #{$borderHover};
   --as-border-active: #{$borderActive};
-
   --as-primary: #{$primary};
   --as-primary-hover: #{$primaryHover};
   --as-primary-active: #{$primaryActive};
   --as-primary-text: #{$primaryText};
-  --as-primary-shadow-1: 0px 1px 8px 2px #{$primaryHover};
-
+  --as-primary-shadow-1: 0 1px 8px 2px #{$primaryHover};
   --as-secondary: #{$secondary};
   --as-secondary-hover: #{$secondaryHover};
   --as-secondary-active: #{$secondaryActive};
   --as-secondary-text: #{$secondaryText};
-  --as-secondary-shadow-1: 0px 1px 8px 2px #{$secondaryHover};
-
+  --as-secondary-shadow-1: 0 1px 8px 2px #{$secondaryHover};
   --as-focus: #{$focusColor};
 }

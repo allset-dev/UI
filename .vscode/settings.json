@@ -27,6 +27,8 @@
   "prettier.configPath": "./config/.prettierrc",
   // NOTE:(PRETTIER) Adding path for prettier ignore files, we don't need this if config files are in root of the aplication.
   "prettier.ignorePath": "./config/.prettierignore",
+  "stylelint.configFile": "./config/.stylelintrc",
+  "stylelint.validate": ["css", "scss"],
   "ionic.externalAddress": true,
   "ionic.previewInEditor": true
 }

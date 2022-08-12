@@ -4,6 +4,7 @@
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "henriiik.vscode-sort",
-    "pflannery.vscode-versionlens"
+    "pflannery.vscode-versionlens",
+    "stylelint.vscode-stylelint"
   ]
 }

@@ -1,7 +1,5 @@
 import { CN } from 'utils';
 
-import './index.scss';
-
 export function ASForm(props: any) {
   const { children, className = '', ...restProps } = props;
 

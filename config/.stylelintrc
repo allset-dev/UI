@@ -1,0 +1,11 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
+  "rules": {
+    "scss/at-import-partial-extension": null,
+    "no-descending-specificity": null,
+    "scss/at-mixin-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "scss/at-function-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "scss/dollar-variable-pattern": null,
+    "function-name-case": null
+  }
+}
