@@ -3,8 +3,9 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { ASAllInput, ASButton, ASForm, ASText } from 'components';
 import { useApi } from 'utils';
 
-import { FactsApi } from './api';
 import './index.scss';
+
+import { FactsApi } from './api';
 
 export function Facts() {
   const [factQuery, setFactQuery] = useState('');

@@ -14,14 +14,15 @@
 
 @mixin componentStyle() {
   &.as-primary {
-    background-color: var(--as-surface-level-1);
+    background-color: transparent;
     border-color: var(--as-primary);
     color: var(--as-primary);
 
-    @include componentHoverStyles(
-      $bgColor: var(--as-surface-level-0),
-      $borderColor: var(--as-focus),
-      $boxShadow: var(--as-primary-shadow-1)
+    @include componentMouseOverStyles(
+      $hoverBorder: var(--as-primary-hover),
+      $activeBoxShadow: var(--as-primary-shadow-1),
+      $focusBorder: var(--as-focus),
+      $hoverBoxShadow: var(--as-primary-shadow-1)
     );
 
     &-solid {
@@ -29,10 +30,12 @@
       border-color: transparent;
       color: var(--as-primary-text);
 
-      @include componentHoverStyles(
-        $bgColor: var(--as-primary-hover),
-        $borderColor: var(--as-focus),
-        $boxShadow: var(--as-primary-shadow-1)
+      @include componentMouseOverStyles(
+        $hoverBg: var(--as-primary-hover),
+        $hoverBoxShadow: var(--as-primary-shadow-1),
+        $focusBg: var(--as-primary-hover),
+        $focusBorder: var(--as-focus),
+        $activeBoxShadow: var(--as-primary-shadow-1)
       );
     }
   }
@@ -42,10 +45,12 @@
     border-color: var(--as-secondary);
     color: var(--as-secondary);
 
-    @include componentHoverStyles(
-      $bgColor: var(--as-surface-level-0),
-      $borderColor: var(--as-focus),
-      $boxShadow: var(--as-secondary-shadow-1)
+    @include componentMouseOverStyles(
+      $hoverBorder: var(--as-secondary-hover),
+      $activeBoxShadow: var(--as-secondary-shadow-1),
+      $hoverColor: var(--as-secondary-hover),
+      $focusBorder: var(--as-focus),
+      $hoverBoxShadow: var(--as-secondary-shadow-1)
     );
 
     &-solid {
@@ -53,28 +58,58 @@
       border-color: transparent;
       color: var(--as-secondary-text);
 
-      @include componentHoverStyles(
-        $bgColor: var(--as-secondary-hover),
-        $borderColor: var(--as-focus),
-        $boxShadow: var(--as-secondary-shadow-1)
+      @include componentMouseOverStyles(
+        $hoverBg: var(--as-secondary-hover),
+        $activeBoxShadow: var(--as-secondary-shadow-1),
+        $focusBorder: var(--as-focus),
+        $hoverBoxShadow: var(--as-secondary-shadow-1)
       );
     }
   }
 }
 
-@mixin componentHoverStyles($bgColor, $borderColor, $boxShadow) {
+@mixin componentMouseOverStyles(
+  $focusBorder,
+  $hoverBg: '',
+  $hoverBorder: '',
+  $hoverColor: '',
+  $focusBg: '',
+  $focusColor: '',
+  $activeBoxShadow: '',
+  $hoverBoxShadow: ''
+) {
   outline: 0;
 
   &:hover {
-    background-color: #{$bgColor};
+    @if $hoverBg {
+      background-color: $hoverBg;
+    }
+    @if $hoverBorder {
+      border-color: $hoverBorder;
+    }
+    @if $hoverColor {
+      color: $hoverColor;
+    }
+    @if $hoverBoxShadow {
+      box-shadow: #{$activeBoxShadow};
+    }
   }
 
-  &:focus-within:not(:active) {
-    background-color: #{$bgColor};
-    border-color: #{$borderColor};
+  &:focus-visible {
+    @if $focusBg {
+      background-color: $focusBg;
+    }
+    @if $focusBorder {
+      border-color: $focusBorder;
+    }
+    @if $focusColor {
+      color: $focusColor;
+    }
   }
 
   &:active {
-    box-shadow: #{$boxShadow};
+    @if $activeBoxShadow {
+      box-shadow: #{$activeBoxShadow};
+    }
   }
 }

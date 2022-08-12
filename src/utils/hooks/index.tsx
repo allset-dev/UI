@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AxiosPromise, AxiosResponse } from 'axios';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+
 import { isEqual, isMobile, setStatusAndNavBarStyles } from 'utils';
 
 export function useComponentWillMount(willMountCallback: () => () => void) {

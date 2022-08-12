@@ -7,7 +7,15 @@
   "semi": true,
   "bracketSpacing": true,
   "endOfLine": "auto",
-  "importOrder": ["^react.*$", "<THIRD_PARTY_MODULES>", "^[./]"],
+  "importOrder": [
+    "^react",
+    "<THIRD_PARTY_MODULES>",
+    "^(utils|components)$",
+    "^static",
+    "^bundle",
+    ".scss$",
+    "^./"
+  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

@@ -55,13 +55,13 @@ $as-border-active: 1;
   --as-primary-hover: #{$primaryHover};
   --as-primary-active: #{$primaryActive};
   --as-primary-text: #{$primaryText};
-  --as-primary-shadow-1: 0px 1px 8px rgba(#{getRgb($primary)}, 0.5);
+  --as-primary-shadow-1: 0px 1px 8px 2px #{$primaryHover};
 
   --as-secondary: #{$secondary};
   --as-secondary-hover: #{$secondaryHover};
   --as-secondary-active: #{$secondaryActive};
   --as-secondary-text: #{$secondaryText};
-  --as-secondary-shadow-1: 0px 1px 8px rgba(#{getRgb($secondary)}, 0.5);
+  --as-secondary-shadow-1: 0px 1px 8px 2px #{$secondaryHover};
 
   --as-focus: #{$focusColor};
 }

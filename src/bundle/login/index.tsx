@@ -1,9 +1,11 @@
 import { ASButton, ASInput } from 'components';
-import { Pillaiyar } from 'static/svgs/pillaiyar';
 import { useApi } from 'utils';
 
-import { LoginApi } from './api';
+import { Pillaiyar } from 'static/svgs/pillaiyar';
+
 import './index.scss';
+
+import { LoginApi } from './api';
 
 export default function Login() {
   const { fetch: checkLogin } = useApi(LoginApi.login);

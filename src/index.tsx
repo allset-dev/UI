@@ -1,11 +1,18 @@
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-import { App as ASApp } from './bundle/app';
+import store from 'store';
+
+import { App as ASApp } from 'bundle/app';
+
 import './index.scss';
 
-const App = () => {
-  return <ASApp />;
-};
-
 const root = createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <ASApp />
+    </BrowserRouter>
+  </Provider>
+);
