@@ -1,39 +1,58 @@
 #!/usr/bin/env bash
 BRANCH_PATH=$(git symbolic-ref -q HEAD)
 BRANCH_NAME=${BRANCH_PATH##*/}
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$')
+STAGED_JS_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|ts|tsx)$')
+STAGED_CSS_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(css|scss)$')
 FEATURE_BRANCH_REGEX="^feature-.*"
+
+if [ $NO_CHECK ]; then
+  exit 0
+fi
 
 if [[ "$BRANCH_NAME" =~ $FEATURE_BRANCH_REGEX ]]; then
   echo "You can't commit on feature branch"
   exit 1
 fi
 
-if [ $NO_CHECK ]; then
-  exit 0
-fi
+JS_LINT_ERROR=false
+CSS_LINT_ERROR=false
 
-if [[ "$STAGED_FILES" = "" ]]; then
-  exit 0
-fi
+if [[ "$STAGED_JS_FILES" ]]; then
+  echo `tput setaf 2`Validating Javascript`tput sgr0`
 
-echo `tput setaf 2`Validating Javascript`tput sgr0`
+  for FILE in $STAGED_JS_FILES
+  do
+    node_modules/.bin/eslint -c config/eslint/.eslintrc --ignore-path config/eslint/.eslintignore "$FILE"
 
-LINT_ERROR=false
+    if ! [[ "$?" == 0 ]]; then
+      JS_LINT_ERROR=true
+    fi
+  done
 
-for FILE in $STAGED_FILES
-do
-  node_modules/.bin/eslint -c config/eslint/.eslintrc --ignore-path config/eslint/.eslintignore "$FILE"
-
-  if ! [[ "$?" == 0 ]]; then
-    LINT_ERROR=true
+  if [[ $JS_LINT_ERROR == false ]]; then
+    echo `tput setaf 2`Javascript validation completed!`tput sgr0`
   fi
-done
+fi
 
-if [[ $LINT_ERROR == true ]]; then
+if [[ "$STAGED_CSS_FILES" ]]; then
+  echo `tput setaf 2`Validating Styles`tput sgr0`
+
+  for FILE in $STAGED_CSS_FILES
+  do
+    node_modules/.bin/stylelint --config config/stylelint/.stylelintrc "$FILE"
+
+    if ! [[ "$?" == 0 ]]; then
+      CSS_LINT_ERROR=true
+    fi
+  done
+
+  if [[ $CSS_LINT_ERROR == false ]]; then
+    echo `tput setaf 2`Javascript validation completed!`tput sgr0`
+  fi
+fi
+
+if [[ $JS_LINT_ERROR == true || $CSS_LINT_ERROR == true ]]; then
   exit 1
-else
-  echo `tput setaf 2`Javascript validation completed!`tput sgr0`
 fi
 
 exit $?
