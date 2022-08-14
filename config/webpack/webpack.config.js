@@ -3,10 +3,10 @@ const path = require('path');
 const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { NODE_ENV, IS_DEV, PROXY, PORT } = require('./env-variables');
-const { killPort } = require('./kill-port');
+const { NODE_ENV, IS_DEV, PROXY, PORT } = require('../env-variables');
+const { killPort } = require('../kill-port');
 
-const appRoot = path.join(__dirname, '..');
+const appRoot = path.join(__dirname, '../..');
 
 const Paths = {
   REACT_ENTRY: path.join(appRoot, 'src', 'index.tsx'),
