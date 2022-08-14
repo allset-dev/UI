@@ -23,7 +23,7 @@ LINT_ERROR=false
 
 for FILE in $STAGED_FILES
 do
-  node_modules/.bin/eslint -c config/.eslintrc --ignore-path config/.eslintignore "$FILE"
+  node_modules/.bin/eslint -c config/eslint/.eslintrc --ignore-path config/eslint/.eslintignore "$FILE"
 
   if ! [[ "$?" == 0 ]]; then
     LINT_ERROR=true
