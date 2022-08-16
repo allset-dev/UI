@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { StatusBar } from '@capacitor/status-bar';
-import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
+// import { NavigationBar } from '@hugotomazi/capacitor-navigation-bar';
 import { isPlatform } from '@ionic/react';
 
 export const isAndroid = isPlatform('android');
@@ -10,7 +10,7 @@ export const isMobile = isAndroid || isIos;
 
 export async function setStatusAndNavBarStyles() {
   await StatusBar.setOverlaysWebView({ overlay: true });
-  await NavigationBar.hide();
+  // await NavigationBar.hide();
 }
 
 type basicDevice = 'mobile' | 'desktop';
