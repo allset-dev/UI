@@ -1,4 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
+import { address } from 'ip';
+
+import { PORT } from './config/env-variables';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.allset',
@@ -7,7 +10,7 @@ const config: CapacitorConfig = {
   cordova: {},
   bundledWebRuntime: false,
   server: {
-    url: 'http://192.168.1.84:3001/',
+    url: `http://${address()}:${PORT}/`,
     cleartext: true,
   },
 };

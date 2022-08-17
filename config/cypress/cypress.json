@@ -1,11 +1,11 @@
 {
-  "componentFolder": "e2e/component",
-  "downloadsFolder": "e2e/downloads",
-  "fixturesFolder": "e2e/fixtures",
-  "integrationFolder": "../src",
-  "pluginsFile": "e2e/plugins",
-  "screenshotsFolder": "e2e/screenshots",
-  "supportFile": "e2e/support",
+  "componentFolder": "./component",
+  "downloadsFolder": "./downloads",
+  "fixturesFolder": "./fixtures",
+  "integrationFolder": "../../src",
+  "pluginsFile": "./plugins",
+  "screenshotsFolder": "./screenshots",
+  "supportFile": "./support",
   "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
-  "videosFolder": "e2e/videos"
+  "videosFolder": "./videos"
 }

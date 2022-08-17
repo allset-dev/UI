@@ -1,15 +1,14 @@
 {
-  "name": "allset",
+  "name": "allset-inc",
   "version": "1.0.0",
   "description": "allset UI code base",
-  "main": "config/index.electron.ts",
   "scripts": {
     "build": "MODE=\"production\" webpack --config config/webpack/webpack.config.js",
     "build:dev": "webpack --config config/webpack/webpack.config.js",
     "build:a": "ionic capacitor add android",
     "build:ios": "ionic capacitor add ios",
     "start": "webpack-dev-server --config config/webpack/webpack.config.js --open",
-    "start:app": "concurrently \"npm start\" \"wait-on http://localhost:3001 && electron .\"",
+    "start:app": "concurrently \"npm start\" \"wait-on http://localhost:3001 && electron config/electron/index.electron.ts\"",
     "start:a": "ionic capacitor open android",
     "start:ios": "ionic capacitor open ios",
     "fix:eslint": "eslint -c config/eslint/.eslintrc --ignore-path config/eslint/.eslintignore ./ --fix",
@@ -45,7 +44,7 @@
     "@capacitor/haptics": "4.0.1",
     "@capacitor/ios": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
-    "@capacitor/status-bar": "^4.0.1",
+    "@capacitor/status-bar": "4.0.1",
     "@ionic-native/core": "5.36.0",
     "@ionic/react": "6.2.3",
     "@reduxjs/toolkit": "1.8.4",
@@ -57,6 +56,7 @@
     "react-router-dom": "6.3.0"
   },
   "devDependencies": {
+    "ip": "1.1.8",
     "@babel/core": "7.18.10",
     "@babel/preset-env": "7.18.10",
     "@babel/preset-react": "7.18.6",

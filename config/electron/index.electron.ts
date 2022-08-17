@@ -1,5 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { app, BrowserWindow, screen: electronScreen } = require('electron');
+const { PORT } = require('../env-variables');
 
 const createMainWindow = () => {
   let mainWindow = new BrowserWindow({
@@ -11,7 +12,7 @@ const createMainWindow = () => {
       nodeIntegration: false,
     },
   });
-  const startURL = 'http://localhost:3001';
+  const startURL = `http://localhost:${PORT}`;
 
   mainWindow.loadURL(startURL);
 
