@@ -15,7 +15,7 @@
     "fix:prettier": "prettier --config config/prettier/.prettierrc --ignore-path config/prettier/.prettierignore --write \"./**/*.{js,jsx,ts,tsx,json,html,scss}\"",
     "fix:stylelint": "stylelint --config config/stylelint/.stylelintrc \"src/**/*.{css,scss}\" --fix",
     "lint": "npm run fix:prettier && npm run fix:eslint && npm run fix:stylelint",
-    "test:unit": "jest --config ./config/jest/jest.config.js",
+    "test:unit": "jest --config config/jest/jest.config.js",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:e2e": "cypress open --project ./config/cypress",
     "cap:setup": "brew install cocoapods && npm run setup:a && npm run setup:ios",
@@ -56,7 +56,6 @@
     "react-router-dom": "6.3.0"
   },
   "devDependencies": {
-    "ip": "1.1.8",
     "@babel/core": "7.18.10",
     "@babel/preset-env": "7.18.10",
     "@babel/preset-react": "7.18.6",
@@ -84,7 +83,9 @@
     "eslint-plugin-unused-imports": "2.0.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.0",
+    "ip": "1.1.8",
     "jest": "28.1.3",
+    "jest-environment-jsdom": "28.1.3",
     "path": "0.12.7",
     "prettier": "2.7.1",
     "sass": "1.54.4",
