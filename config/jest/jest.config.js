@@ -2,8 +2,9 @@
 const path = require('path');
 
 module.exports = {
+  preset: 'ts-jest',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.(j|t)sx?$': 'ts-jest',
   },
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
@@ -14,5 +15,6 @@ module.exports = {
   },
   rootDir: process.cwd(),
   testPathIgnorePatterns: ['node_modules'],
+  transformIgnorePatterns: [`/node_modules/(?!@ionic|ionicons|gsap|@stencil)`],
   testRegex: '(/__tests__/.*|(\\.|/)(test))\\.[jt]sx?$',
 };
