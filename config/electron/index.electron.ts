@@ -13,6 +13,11 @@ const createMainWindow = () => {
     },
   });
   const startURL = `http://localhost:${PORT}`;
+  //   process.env.ELECTRON_START_URL || url.format({
+  //   pathname: path.join(__dirname, '../index.html'),
+  //   protocol: 'file:',
+  //   slashes: true,
+  // });
 
   mainWindow.loadURL(startURL);
 

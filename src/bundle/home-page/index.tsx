@@ -17,7 +17,7 @@ export default function HomePage() {
       <ASCarousel
         horizontal={device === 'mobile'}
         bottomHeight={device === 'mobile' ? 70 : 55}
-        carouselColors={['#000', '#bbf333', '#ffb653', '#90b0fa']}
+        carouselColors={['', '#bbf333', '#ffb653', '#90b0fa']}
         carousels={[
           <div className="as-home-page-carousel">
             <h1 className="as-home-page-carousel-heading">பிள்ளையார் நோன்பு 2021</h1>
