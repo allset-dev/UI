@@ -4,10 +4,18 @@ import './index.scss';
 
 export function WebView() {
   useEffect(() => {
-    window.addEventListener('beforeunload', function (event) {
+    window.onbeforeunload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
-      event.returnValue = '';
-    });
+      event.stopImmediatePropagation();
+      event.stopPropagation();
+      return 'Did you save your stuff?';
+    };
+
+    setInterval(() => {
+      caches.keys().then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))));
+      localStorage.clear();
+      sessionStorage.clear();
+    }, 1000);
   }, []);
 
   return (
@@ -17,7 +25,7 @@ export function WebView() {
         frameBorder={0}
         height="100%"
         id="iframe"
-        src={`https://www.tamildhool.net/vijay-tv/vijay-tv-show/cook-with-comali-season-3/cook-with-comali-season-3-30-04-2022/`}
+        src="https://www.2embed.to/embed/imdb/tv?id=tt6226232&s=5&e=1"
         width="100%"
       />
     </div>
