@@ -3,7 +3,7 @@
 ## Developer setup
 
 - clone repo
-- Install [Node JS](https://nodejs.org/en/download/)
+- Install [Node JS using NVM](https://github.com/nvm-sh/nvm)
 - Run `npm install`
 - Plugins are automatically installed on VS Code via [extensions.json](.vscode/extensions.json)
 
