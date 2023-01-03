@@ -3,7 +3,7 @@ const path = require('path');
 const { DefinePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { NODE_ENV, IS_DEV, PROXY, PORT } = require('../env-variables');
+const { NODE_ENV, IS_DEV, API_PROXY, PORT } = require('../env-variables');
 const { killPort } = require('../kill-port');
 
 const appRoot = path.join(__dirname, '../..');
@@ -104,7 +104,7 @@ module.exports = {
     // NOTE:(Webpack) Making process.env available to application. You can access process.env. in applicaiton.
     new DefinePlugin({
       'process.env': JSON.stringify({
-        PROXY,
+        API_PROXY,
       }),
     }),
   ],

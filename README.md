@@ -16,7 +16,7 @@
 ## Start web app locally
 
 - Run `npm start`
-- Go to `https://localhost:3001`
+- App will automatically open in default browser
 
 ## Start electron app locally
 

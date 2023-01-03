@@ -4,7 +4,7 @@ interface CustomAxiosConfig extends AxiosRequestConfig {
   skipDataStringify?: boolean;
 }
 
-function getAxiosApis(baseURL: string) {
+function getAxiosApis(baseURL?: string) {
   axios.interceptors.response.use(handleOnSuccess, handleOnReject);
 
   function requestWithoutData(method: Method) {
@@ -63,4 +63,4 @@ function handleOnReject(error: any) {
   }
 }
 
-export const API = getAxiosApis(process.env.PROXY || '');
+export const API = getAxiosApis(process.env.API_PROXY);

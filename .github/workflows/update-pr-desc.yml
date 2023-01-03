@@ -13,5 +13,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHECK: 'updatePR'
-          JIRA_HOST_URL: 'https://logichub.atlassian.net'
+          JIRA_HOST_URL: 'https://allset.atlassian.net'
           JIRA_PROJECT_NAME: 'allset'

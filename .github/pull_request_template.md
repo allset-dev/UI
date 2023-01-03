@@ -27,9 +27,7 @@ This PR is to create/fix ...
 ### Coding Guidelines
 
 - [ ] Props are sorted
-- [ ] Order of imports : external libraries, lh alias ( lhConstant, lhComponent, lhUtil ), es6/components, bundle imports, local components / styles
 - [ ] Order of declaration within a component : useBundle, useDispatch, useSelector, useMemo, useState, useEffect
-- [ ] Line breaks are added in styling
 - [ ] Css / SASS variables are used in the styles
 - [ ] Variable / functions follow the naming convention
 
