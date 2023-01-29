@@ -18,7 +18,7 @@ JS_LINT_ERROR=false
 CSS_LINT_ERROR=false
 
 if [[ "$STAGED_JS_FILES" ]]; then
-  echo `tput setaf 2`Validating Javascript`tput sgr0`
+  echo `tput setaf 3`Validating Javascript`tput sgr0`
 
   for FILE in $STAGED_JS_FILES
   do
@@ -35,7 +35,7 @@ if [[ "$STAGED_JS_FILES" ]]; then
 fi
 
 if [[ "$STAGED_CSS_FILES" ]]; then
-  echo `tput setaf 2`Validating Styles`tput sgr0`
+  echo `tput setaf 3`Validating Styles`tput sgr0`
 
   for FILE in $STAGED_CSS_FILES
   do
