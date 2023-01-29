@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { AxiosPromise, AxiosResponse } from 'axios';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -47,36 +46,36 @@ export function useDeepCompareMemo(callback: () => void, dependencies: any[]) {
   return useMemo(callback, dependencies.map(useDeepCompareMemoize));
 }
 
-const NoErrorObj = { isError: false, errorMsg: '' };
-
-type useApiProps = (...args: any) => AxiosPromise<any>;
-type fetchResponce = (value: AxiosResponse<any, any>) => void;
+type useApiProps<TData> = (abortSignal: AbortSignal, ...args: any) => Promise<TData>;
+type fetchResponce<TData> = (value: TData) => void;
 type fetchReject = (error: any) => void;
 
-export function useApi(api: useApiProps) {
-  const axiosCancelToken = useRef(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [{ isError, errorMsg }, setIsError] = useState(NoErrorObj);
+export function useApi<TData = any>(api: useApiProps<TData>) {
+  const axiosCancelToken = useRef<AbortController>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error>(null);
+  const [data, setData] = useState<TData>(null);
 
   function fetch(...args: any) {
     if (isLoading) {
       cancel();
     } else {
       setIsLoading(true);
-      setIsError(NoErrorObj);
+      setError(null);
     }
 
     axiosCancelToken.current = new AbortController();
 
-    return new Promise((res: fetchResponce, rej: fetchReject) => {
+    return new Promise((res: fetchResponce<TData>, rej: fetchReject) => {
       api(axiosCancelToken.current.signal, ...args)
         .then((response) => {
           setIsLoading(false);
+          setData(response);
           res(response);
         })
-        .catch((error) => {
+        .catch((error: Error) => {
+          setError(error);
           setIsLoading(false);
-          setIsError({ isError: true, errorMsg: error });
           rej(error);
         });
     });
@@ -86,7 +85,11 @@ export function useApi(api: useApiProps) {
     axiosCancelToken.current.abort();
   }
 
-  return { fetch, cancel, isL: isLoading, isE: isError, errorMsg };
+  useEffect(() => {
+    fetch();
+  }, []);
+
+  return { fetch, cancel, isLoading, isError: Boolean(error), error, data };
 }
 
 type UseRefStateReturns<T> = [T, (updatedValue: T) => void, () => T];

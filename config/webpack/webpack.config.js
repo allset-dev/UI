@@ -26,6 +26,8 @@ module.exports = {
   devServer: {
     compress: true,
     port: PORT,
+    // Webpack: Any path name will be routed to the root htmll file, and routing will be taken care by React-router
+    historyApiFallback: true,
   },
   entry: Paths.REACT_ENTRY,
   output: {

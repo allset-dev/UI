@@ -21,7 +21,6 @@
     @include componentMouseOverStyles(
       $hoverBorder: var(--as-primary-hover),
       $activeBoxShadow: var(--as-primary-shadow-1),
-      $focusBorder: var(--as-focus),
       $hoverBoxShadow: var(--as-primary-shadow-1)
     );
 
@@ -34,7 +33,6 @@
         $hoverBg: var(--as-primary-hover),
         $hoverBoxShadow: var(--as-primary-shadow-1),
         $focusBg: var(--as-primary-hover),
-        $focusBorder: var(--as-focus),
         $activeBoxShadow: var(--as-primary-shadow-1)
       );
     }
@@ -49,7 +47,6 @@
       $hoverBorder: var(--as-secondary-hover),
       $activeBoxShadow: var(--as-secondary-shadow-1),
       $hoverColor: var(--as-secondary-hover),
-      $focusBorder: var(--as-focus),
       $hoverBoxShadow: var(--as-secondary-shadow-1)
     );
 
@@ -61,7 +58,6 @@
       @include componentMouseOverStyles(
         $hoverBg: var(--as-secondary-hover),
         $activeBoxShadow: var(--as-secondary-shadow-1),
-        $focusBorder: var(--as-focus),
         $hoverBoxShadow: var(--as-secondary-shadow-1)
       );
     }
@@ -69,7 +65,7 @@
 }
 
 @mixin componentMouseOverStyles(
-  $focusBorder,
+  $focusBorder: '',
   $hoverBg: '',
   $hoverBorder: '',
   $hoverColor: '',
@@ -78,37 +74,38 @@
   $activeBoxShadow: '',
   $hoverBoxShadow: ''
 ) {
-  outline: 0;
-
   &:hover {
-    @if $hoverBg {
+    @if $hoverBg != '' {
       background-color: $hoverBg;
     }
-    @if $hoverBorder {
+    @if $hoverBorder != '' {
       border-color: $hoverBorder;
     }
-    @if $hoverColor {
+    @if $hoverColor != '' {
       color: $hoverColor;
     }
-    @if $hoverBoxShadow {
+    @if $hoverBoxShadow != '' {
       box-shadow: #{$activeBoxShadow};
     }
   }
 
   &:focus-visible {
-    @if $focusBg {
+    outline: solid 2px var(--as-focus);
+    outline-offset: -2px;
+
+    @if $focusBg != '' {
       background-color: $focusBg;
     }
-    @if $focusBorder {
+    @if $focusBorder != '' {
       border-color: $focusBorder;
     }
-    @if $focusColor {
+    @if $focusColor != '' {
       color: $focusColor;
     }
   }
 
   &:active {
-    @if $activeBoxShadow {
+    @if $activeBoxShadow != '' {
       box-shadow: #{$activeBoxShadow};
     }
   }

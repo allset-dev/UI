@@ -1,10 +1,10 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { useSetAppPreference } from 'utils';
 
 import { GlobalModals } from 'bundle/global-modals';
 
-import { AppLoggedInRoutes, AppLoggedoutRoutes } from './routes';
+import { AppLoggedInRoutes, AppLoggedoutRoutes, StandaloneRoutes } from './routes';
 
 const isLoggedIn = false;
 
@@ -17,12 +17,11 @@ export function App() {
     <>
       <GlobalModals />
       <Routes>
-        {routes.map((route, routeIndex) => {
+        {[...StandaloneRoutes, ...routes].map((route, routeIndex) => {
           const { path, component } = route;
 
           return <Route key={routeIndex} path={path} element={component()} />;
         })}
-        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );

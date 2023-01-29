@@ -18,7 +18,7 @@ export function Facts() {
   useEffect(() => {
     fetchRandomFacts()
       .then((response) => {
-        setFact(response?.data?.value);
+        setFact(response?.value);
       })
       .catch(() => {
         setFact('Funny fact chucknorris API Failed');
@@ -33,7 +33,7 @@ export function Facts() {
         .then((response) => {
           let newFact = '';
 
-          const result = response?.data?.result;
+          const result = response?.result;
           const resultLength = result.length;
           if (resultLength) {
             const randomFactIndex = Math.floor(Math.random() * resultLength);

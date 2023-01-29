@@ -3,20 +3,18 @@ import { ReactNode, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 import { ASButton } from 'components';
-import { CN, percentage, useGetDevice } from 'utils';
+import { CN, isMobile, percentage } from 'utils';
 
 import { Pillaiyar } from 'static/svgs/pillaiyar';
 
 import './index.scss';
 
 export default function HomePage() {
-  const device = useGetDevice();
-
   return (
     <>
       <ASCarousel
-        horizontal={device === 'mobile'}
-        bottomHeight={device === 'mobile' ? 70 : 55}
+        horizontal={isMobile}
+        bottomHeight={isMobile ? 70 : 55}
         carouselColors={['', '#bbf333', '#ffb653', '#90b0fa']}
         carousels={[
           <div className="as-home-page-carousel">

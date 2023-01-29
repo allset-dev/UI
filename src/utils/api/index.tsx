@@ -8,14 +8,22 @@ function getAxiosApis(baseURL?: string) {
   axios.interceptors.response.use(handleOnSuccess, handleOnReject);
 
   function requestWithoutData(method: Method) {
-    return (url: string, config: CustomAxiosConfig = {}) => {
-      return axios(getAxiosConfig({ baseURL, method, url, ...config }));
+    return async <T,>(url: string, config: CustomAxiosConfig = {}): Promise<T> => {
+      const res: AxiosResponse<T> = await axios(
+        getAxiosConfig({ baseURL, method, url, ...config })
+      );
+
+      return res.data;
     };
   }
 
   function requestWithData(method: Method) {
-    return (url: string, data: any, config: CustomAxiosConfig = {}) => {
-      return axios(getAxiosConfig({ baseURL, method, url, data, ...config }));
+    return async <T,>(url: string, data: any, config: CustomAxiosConfig = {}): Promise<T> => {
+      const res: AxiosResponse<T> = await axios(
+        getAxiosConfig({ baseURL, method, url, data, ...config })
+      );
+
+      return res.data;
     };
   }
 
@@ -55,9 +63,9 @@ function handleOnSuccess(response: AxiosResponse<any, any>) {
   return response;
 }
 
-function handleOnReject(error: any) {
+function handleOnReject(error: Error) {
   if (axios.isCancel(error)) {
-    return Promise.reject({ cancelled: true, message: 'Request cancelled' });
+    return Promise.reject(new Error('Request cancelled'));
   } else {
     return Promise.reject(error);
   }

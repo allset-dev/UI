@@ -1,28 +1,18 @@
 import { expect } from '@jest/globals';
 import { RenderResult, act, render } from '@testing-library/react';
-import { AxiosPromise } from 'axios';
 
-import { FactsApi } from './api';
+import { Fact, FactsApi } from './api';
 import { Facts } from './index';
 
 const fact = 'Funny fact chucknorris API Failed';
 
 describe('<Facts />', function () {
-  let mockedGetRandomFact: AxiosPromise<any>;
+  let mockedGetRandomFact: jest.SpyInstance<Promise<Fact>>;
   let component: RenderResult;
 
   beforeEach(async () => {
-    // @ts-ignore
     mockedGetRandomFact = jest.spyOn(FactsApi, 'getRandomFact').mockImplementationOnce(() => {
-      return new Promise((resolve) => {
-        return resolve({
-          data: { value: fact },
-          status: 0,
-          statusText: '',
-          headers: {},
-          config: {},
-        });
-      });
+      return Promise.resolve({ value: fact });
     });
 
     await act(async () => {
