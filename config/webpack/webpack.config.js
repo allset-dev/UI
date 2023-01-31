@@ -22,7 +22,7 @@ if (IS_DEV) {
 }
 
 module.exports = {
-  devtool: IS_DEV ? 'inline-source-map' : false,
+  devtool: IS_DEV ? 'eval-source-map' : false,
   devServer: {
     compress: true,
     port: PORT,
@@ -107,6 +107,7 @@ module.exports = {
     new DefinePlugin({
       'process.env': JSON.stringify({
         API_PROXY,
+        IS_DEV,
       }),
     }),
   ],

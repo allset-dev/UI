@@ -50,8 +50,10 @@
     "@reduxjs/toolkit": "1.9.2",
     "axios": "1.2.6",
     "gsap": "3.11.4",
+    "i18next": "^22.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^12.1.4",
     "react-redux": "8.0.5",
     "react-router-dom": "6.8.0"
   },
@@ -79,6 +81,7 @@
     "electron": "22.1.0",
     "eslint": "8.33.0",
     "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-i18next": "^6.0.0-2",
     "eslint-plugin-react": "7.32.1",
     "eslint-plugin-unused-imports": "2.0.0",
     "file-loader": "6.2.0",

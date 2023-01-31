@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
+import Chess from 'bundle/chess';
 import HomePage from 'bundle/home-page';
 
 export interface RouteProps {
@@ -8,7 +9,12 @@ export interface RouteProps {
   component: () => ReactNode;
 }
 
-export const StandaloneRoutes: RouteProps[] = [];
+export const StandaloneRoutes: RouteProps[] = [
+  {
+    path: '/chess',
+    component: Chess,
+  },
+];
 
 export const AppLoggedoutRoutes: RouteProps[] = [
   {
@@ -27,7 +33,7 @@ export const AppLoggedInRoutes: RouteProps[] = [
   {
     path: '/dashboard',
     component: () => {
-      return <div>Dashboard</div>;
+      return <div />;
     },
   },
   {

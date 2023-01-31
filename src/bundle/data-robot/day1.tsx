@@ -94,7 +94,7 @@ export function DataRobotInterviewDay1() {
       .filter((s) => {
         const noOfMatches = string.match(new RegExp(s, 'g'));
 
-        return noOfMatches.length === 1;
+        return noOfMatches && noOfMatches.length === 1;
       })
       .join('');
   }
@@ -146,5 +146,5 @@ export function DataRobotInterviewDay1() {
     return arr.every((val) => val === arr[0]);
   }
 
-  return <div />;
+  return null;
 }

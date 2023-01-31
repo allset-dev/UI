@@ -8,6 +8,8 @@ import { App as ASApp } from 'bundle/app';
 
 import './index.scss';
 
+import './localization';
+
 const root = createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

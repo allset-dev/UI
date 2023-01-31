@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -145,3 +146,5 @@ export function useSetAppPreference() {
   gsap.registerPlugin(ScrollTrigger);
   useSetMobilePreference();
 }
+
+export { useTranslation };

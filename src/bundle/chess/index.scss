@@ -1,0 +1,33 @@
+.chessboard {
+  display: flex;
+  flex-flow: column wrap;
+  color: black;
+}
+
+.board-row {
+  display: flex;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid black;
+  user-select: none;
+}
+
+.square:nth-child(even) {
+  background-color: #ddd;
+}
+
+.square:nth-child(odd) {
+  background-color: #fff;
+}
+
+.square.selected {
+  background-color: #f0f0f0;
+}
