@@ -5,13 +5,11 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "outDir": "./dist/",
-    "target": "es5",
+    "target": "ES2016",
+    "module": "ESNext",
     "baseUrl": "src",
     "esModuleInterop": true,
     "types": ["cypress", "jest"]
-    // "paths": {
-    //   "fixtures/*": ["../config/cy/fixtures/*"]
-    // }
   },
   "exclude": ["node_modules", "build"]
 }

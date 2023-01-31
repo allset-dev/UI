@@ -1,7 +1,6 @@
 .as-button {
   -webkit-tap-highlight-color: rgb(0 0 0);
   align-items: center;
-  background-color: var(--as-level-0);
   border-radius: 40px;
   border: $spacing-2 solid transparent;
   cursor: pointer;
@@ -10,7 +9,7 @@
   font-weight: bold;
   justify-content: center;
   padding: $spacing-8 $spacing-28;
-  transition: all 0.25s ease;
+  transition: all $transition-timing ease-in-out;
   user-select: none;
   width: fit-content;
 

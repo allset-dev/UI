@@ -14,7 +14,7 @@
 
 @mixin componentStyle() {
   &.as-primary {
-    background-color: transparent;
+    background-color: var(--as-surface-level-0);
     border-color: var(--as-primary);
     color: var(--as-primary);
 
@@ -39,7 +39,7 @@
   }
 
   &.as-secondary {
-    background-color: var(--as-surface-level-1);
+    background-color: var(--as-surface-level-0);
     border-color: var(--as-secondary);
     color: var(--as-secondary);
 
@@ -90,8 +90,8 @@
   }
 
   &:focus-visible {
-    outline: solid 2px var(--as-focus);
-    outline-offset: -2px;
+    // outline: solid 2px var(--as-focus);
+    // outline-offset: -2px;
 
     @if $focusBg != '' {
       background-color: $focusBg;
