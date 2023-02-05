@@ -73,7 +73,7 @@ const manager: Manger = {
   ],
 };
 
-export default function GoogleInterview() {
+export default function GoogleInterview(): JSX.Element {
   console.log('initial managers pay', manager);
   console.log('updated managers pay', updateManagerSalary(manager));
 

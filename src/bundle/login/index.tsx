@@ -1,5 +1,5 @@
 import { ASButton, ASInput } from 'components';
-import { useApi } from 'utils';
+import { useApi, useTranslation } from 'utils';
 
 import { Pillaiyar } from 'static/svgs/pillaiyar';
 
@@ -8,6 +8,8 @@ import './index.scss';
 import { LoginApi } from './api';
 
 export default function Login() {
+  const { t } = useTranslation();
+
   const { fetch: checkLogin } = useApi(LoginApi.login);
 
   async function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -39,10 +41,10 @@ export default function Login() {
         />
         <div className="asb-login-button-group">
           <ASButton className="asb-login-button" type="submit">
-            Login
+            {t('login')}
           </ASButton>
           <ASButton className="asb-login-button" buttonStyle="primary">
-            I need help
+            {t('iNeedHelp')}
           </ASButton>
         </div>
       </form>

@@ -1,5 +1,6 @@
 export const enUSLanguage = {
   login: 'Login',
+  iNeedHelp: 'I need help',
   signUp: 'Sign up',
   chuckNorris: 'Chuck Norris',
   randomFacts: 'Random Facts',

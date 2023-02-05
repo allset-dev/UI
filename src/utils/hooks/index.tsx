@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation as useReactTranslation } from 'react-i18next';
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { LanguageDictionary } from 'localization/language/en-us';
 
 import { isEqual, isMobile, setStatusAndNavBarStyles } from 'utils';
 
@@ -147,4 +148,12 @@ export function useSetAppPreference() {
   useSetMobilePreference();
 }
 
-export { useTranslation };
+export function useTranslation() {
+  interface TypedTFunction {
+    t: (key: keyof LanguageDictionary) => string;
+  }
+
+  const { t } = useReactTranslation();
+
+  return { t } as TypedTFunction;
+}

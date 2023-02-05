@@ -32,7 +32,7 @@ function ChessBoard() {
     }
   };
 
-  const renderSquare = (row, col) => {
+  const renderSquare = (row: number, col: number) => {
     const isSelected = selectedSquare && selectedSquare.row === row && selectedSquare.col === col;
     return (
       <div

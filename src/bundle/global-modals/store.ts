@@ -4,9 +4,13 @@ const reducerName = 'globalModal';
 
 const initialState = {
   open: {
-    login: false,
+    login: false as boolean,
   },
 };
+
+interface State {
+  [reducerName]: typeof initialState;
+}
 
 const store = createSlice({
   name: reducerName,
@@ -21,5 +25,5 @@ const store = createSlice({
 export default store.reducer;
 export const actions = store.actions;
 export const selectors = {
-  getUser: (state) => state[reducerName] || {},
+  getUser: (state: State) => state[reducerName] || {},
 };

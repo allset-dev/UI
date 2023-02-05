@@ -1,4 +1,8 @@
-export function Pillaiyar(props) {
+interface props {
+  className?: string;
+}
+
+export function Pillaiyar(props: props) {
   const { className } = props;
   return (
     <svg

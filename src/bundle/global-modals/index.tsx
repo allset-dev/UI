@@ -1,3 +1,3 @@
-export function GlobalModals() {
+export function GlobalModals(): JSX.Element {
   return null;
 }

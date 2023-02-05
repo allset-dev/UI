@@ -2,6 +2,7 @@ import { LanguageKey } from './en-us';
 
 export const taINLanguage: Record<LanguageKey, string> = {
   login: 'Login',
+  iNeedHelp: 'I need help',
   signUp: 'Sign up',
   chuckNorris: 'Chuck Norris',
   randomFacts: 'Random Facts',

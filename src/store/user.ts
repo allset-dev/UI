@@ -3,8 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const reducerName = 'user';
 
 const initialState = {
-  isLoggedIn: false,
-};
+  isLoggedIn: false as boolean,
+} as const;
+
+interface State {
+  [reducerName]: typeof initialState;
+}
 
 const store = createSlice({
   name: reducerName,
@@ -23,6 +27,6 @@ const store = createSlice({
 export default store.reducer;
 export const actions = store.actions;
 export const selectors = {
-  getUser: (state) => state[reducerName] || {},
-  getIsLoggedIn: (state) => state[reducerName]?.isLoggedIn || false,
+  getUser: (state: State) => state[reducerName] || {},
+  getIsLoggedIn: (state: State) => state[reducerName]?.isLoggedIn || false,
 };

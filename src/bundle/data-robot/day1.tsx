@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 // HTML 5 tags
 // https://www.htmlgoodies.com/html5/new-tags-in-html5/
 
-export function DataRobotInterviewDay1() {
+export function DataRobotInterviewDay1(): JSX.Element {
   useEffect(() => {
     console.log('asd', printPairs([1, 5, 7, -1, 5], 6));
     console.log('remove alternative char:', removeAlternatingCharacters('ABBABAABBB'));
