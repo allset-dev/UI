@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 import Chess from 'bundle/chess';
 import HomePage from 'bundle/home-page';
+import GoogleInterview from 'bundle/interview-questions/Google';
 
 export interface RouteProps {
   path: string;
@@ -13,6 +14,10 @@ export const StandaloneRoutes: RouteProps[] = [
   {
     path: '/chess',
     component: Chess,
+  },
+  {
+    path: '/interview-questions',
+    component: GoogleInterview,
   },
 ];
 
