@@ -10,7 +10,7 @@ const appRoot = path.join(__dirname, '../..');
 
 const Paths = {
   REACT_ENTRY: path.join(appRoot, 'src', 'index.tsx'),
-  ROOT_HTML: path.join(appRoot, 'src', 'static', 'index.html'),
+  ROOT_HTML: path.join(appRoot, 'public', 'index.html'),
   OUTPUT_PATH: path.join(appRoot, 'build'),
   COMPILE_JS_TS_INCLUDE: path.join(appRoot, 'src'),
   PUBLIC_PATH: '/',

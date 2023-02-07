@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import Chess from 'bundle/chess';
 import HomePage from 'bundle/home-page';
 import GoogleInterview from 'bundle/interview-questions/Google';
+import Login from 'bundle/login';
 
 export interface RouteProps {
   path: string;
@@ -23,13 +24,17 @@ export const StandaloneRoutes: RouteProps[] = [
 
 export const AppLoggedoutRoutes: RouteProps[] = [
   {
-    path: '/login',
+    path: '/home-page',
     component: () => <HomePage />,
+  },
+  {
+    path: '/login',
+    component: () => <Login />,
   },
   {
     path: '*',
     component: () => {
-      return <Navigate to="/login" />;
+      return <Navigate replace to="/home-page" />;
     },
   },
 ];
@@ -44,7 +49,7 @@ export const AppLoggedInRoutes: RouteProps[] = [
   {
     path: '*',
     component: () => {
-      return <Navigate to="/dashboard" />;
+      return <Navigate replace to="/dashboard" />;
     },
   },
 ];

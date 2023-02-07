@@ -4,7 +4,7 @@ import gsap from 'gsap';
 
 import { CN, percentage } from 'utils';
 
-import { Pillaiyar } from 'static/svgs/pillaiyar';
+import { Pillaiyar } from 'assests/svgs/pillaiyar';
 
 import './index.scss';
 
@@ -52,11 +52,9 @@ export function ASSplitCarousel(props: ASSplitCarouselProps) {
   }
 
   function scrollAnimate() {
-    const carouselElement = carouselRef.current as HTMLElement;
+    const carouselElement = carouselRef.current;
     const carouselBottomElement = carouselBottom.current;
     const carouselTopElement = carouselTop.current;
-
-    if (!carouselBottomElement || !carouselTopElement) return;
 
     const { scrollTop, clientHeight, scrollHeight, scrollLeft, clientWidth, scrollWidth } =
       carouselElement;
@@ -121,7 +119,7 @@ export function ASSplitCarousel(props: ASSplitCarouselProps) {
       </div>
       <div className="as-carousel-main">
         <div className="as-carousel-main-top" ref={carouselTop} style={{ height: '100%' }}>
-          <Pillaiyar className="as-login-avatar" />
+          <Pillaiyar />
         </div>
         <div className="as-carousel-main-bottom" ref={carouselBottom} style={{ height: `0%` }}>
           {carousels.map((carousel, carouselIndex) => {

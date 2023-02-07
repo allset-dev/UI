@@ -1,7 +1,7 @@
 import { ASButton, ASInput } from 'components';
 import { useApi, useTranslation } from 'utils';
 
-import { Pillaiyar } from 'static/svgs/pillaiyar';
+import { Pillaiyar } from 'assests/svgs/pillaiyar';
 
 import './index.scss';
 
@@ -28,22 +28,22 @@ export default function Login() {
   }
 
   return (
-    <div className="asb-login">
-      <Pillaiyar className="asb-login-avatar" />
-      <form className="asb-login-form" onSubmit={handleOnSubmit}>
-        <ASInput type="email" required className="asb-login-input" label="Email" id="email" />
+    <div className="as-login">
+      <Pillaiyar className="as-login-avatar" />
+      <form className="as-login-form" onSubmit={handleOnSubmit}>
+        <ASInput type="email" required className="as-login-input" label="Email" id="email" />
         <ASInput
           type="password"
           required
-          className="asb-login-input"
+          className="as-login-input"
           label="Passpord"
           id="password"
         />
-        <div className="asb-login-button-group">
-          <ASButton className="asb-login-button" type="submit">
+        <div className="as-login-button-group">
+          <ASButton className="as-login-button" type="submit">
             {t('login')}
           </ASButton>
-          <ASButton className="asb-login-button" buttonStyle="primary">
+          <ASButton className="as-login-button" buttonStyle="primary">
             {t('iNeedHelp')}
           </ASButton>
         </div>

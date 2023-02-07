@@ -1,25 +1,27 @@
 .as-input {
-  background: var(--as-surface-level-1);
-  border-radius: 8px;
-  border: 2px solid var(--as-surface-level-1);
-  display: flex;
-  flex-direction: column;
-  font-size: inherit;
-  outline: 0;
-  padding: $spacing-8;
-  color: inherit;
+  #{&} {
+    &-input {
+      background: var(--as-surface-level-1);
+      border-radius: 8px;
+      border: 2px solid var(--as-surface-level-1);
+      display: flex;
+      flex-direction: column;
+      font-size: inherit;
+      outline: 0;
+      padding: $spacing-8;
+      color: inherit;
 
-  &:focus {
-    border-color: var(--as-focus);
-    background: var(--as-surface-level-0);
-  }
+      &:focus {
+        border-color: var(--as-focus);
+        background: var(--as-surface-level-0);
+      }
 
-  &:hover {
-    background: var(--as-surface-level-0);
-  }
+      &:hover {
+        background: var(--as-surface-level-0);
+      }
+    }
 
-  &-error {
-    &.as-text {
+    &-error {
       color: red;
     }
   }

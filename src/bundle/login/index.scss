@@ -1,4 +1,4 @@
-.asb-login {
+.as-login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +8,6 @@
 
   &-avatar {
     font-size: 10em;
-    color: var(--as-surface-level-4);
     margin-bottom: 50px;
   }
 

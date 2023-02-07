@@ -11,7 +11,7 @@
     "^react",
     "<THIRD_PARTY_MODULES>",
     "^(utils|components)$",
-    "^static",
+    "^assests",
     "^bundle",
     ".scss$",
     "^./"

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { ASButton, ASSplitCarousel } from 'components';
 import { isMobile, useTranslation } from 'utils';
 
@@ -27,7 +29,9 @@ export default function HomePage() {
         ]}
       />
       <div className="as-home-page-button-group">
-        <ASButton text={t('login')} buttonStyle="primary" />
+        <Link to="/login">
+          <ASButton text={t('login')} buttonStyle="primary" />
+        </Link>
         <ASButton text={t('signUp')} />
       </div>
     </>
