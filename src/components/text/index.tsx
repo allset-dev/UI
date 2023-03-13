@@ -1,19 +1,25 @@
-import { createElement } from 'react';
+import { ReactHTML, ReactNode, createElement } from 'react';
 
 import { CN } from 'utils';
 
 import './index.scss';
 
-export function ASText(props: any) {
-  const { className = '', children, text, ...restProps } = props;
-
-  const localText = children || text;
-
-  return <TextEl {...restProps} text={localText} className={CN('as-text', className)} />;
+interface ASTextProps {
+  className?: string;
+  children?: ReactNode;
+  tag?: keyof ReactHTML;
+  text?: string;
+  style?: 'error' | 'success' | 'helptext' | 'warning';
 }
 
-function TextEl(props: any) {
-  const { tag = 'p', text, ...restProps } = props;
+export function ASText(props: ASTextProps) {
+  const { className = '', children, text, tag = 'p', style } = props;
 
-  return createElement(tag, restProps, text);
+  const localText = children || text || '';
+
+  return createElement(
+    tag,
+    { className: CN('as-text', className, style && `as-${style}`) },
+    localText
+  );
 }

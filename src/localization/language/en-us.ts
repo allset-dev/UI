@@ -22,6 +22,7 @@ export const enUSLanguage = {
   hosting Pillayar Nonbu this year at Hyatt Regency, Houston Intercontinental Airport.
   Please mark your calendar for Pillayar Nonbu on Dec 24th, 2021 For any enquiries,
   please contact organizing team at houston.nonbu@gmail.com.`,
+  '*': '*',
 } as const;
 
 export type LanguageDictionary = typeof enUSLanguage;

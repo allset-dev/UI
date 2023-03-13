@@ -1,3 +1,7 @@
 .as-text {
   color: var(--as-text-normal);
+
+  &.as-error {
+    color: var(--as-error);
+  }
 }

@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import './index.scss';
 
 export function WebView() {
+  const [src] = useState('https://player.vimeo.com/video/804796236');
+
   useEffect(() => {
     window.onbeforeunload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
@@ -13,20 +15,18 @@ export function WebView() {
 
     setInterval(() => {
       caches.keys().then((keyList) => Promise.all(keyList.map((key) => caches.delete(key))));
-      localStorage.clear();
-      sessionStorage.clear();
     }, 1000);
   }, []);
 
   return (
     <div className="as-web-view">
       <iframe
-        allowFullScreen
-        frameBorder={0}
         height="100%"
         id="iframe"
-        src="https://www.2embed.to/embed/imdb/tv?id=tt6226232&s=5&e=1"
+        src={src}
+        style={{ border: 0 }}
         width="100%"
+        allow="autoplay; fullscreen; picture-in-picture"
       />
     </div>
   );

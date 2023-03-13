@@ -1,5 +1,5 @@
 import { ASText } from 'components';
-import { CN } from 'utils';
+import { CN, useTranslation } from 'utils';
 
 import './index.scss';
 
@@ -10,18 +10,31 @@ export interface ASInputProps
 }
 
 export function ASInput(props: ASInputProps) {
-  const { className, label, id, error = 'sdf', ...restProps } = props;
+  const { t } = useTranslation();
+
+  const { className, label, id, error, required, ...restProps } = props;
 
   return (
     <label className={CN('as-input', error && 'as-input-error')} htmlFor={id}>
       {label && (
         <ASText className="as-input-label" tag="span">
           {label}
+          {required && (
+            <ASText tag="span" style="error">
+              {t('*')}
+            </ASText>
+          )}
         </ASText>
       )}
-      <input className={CN('as-input-input', className)} id={id} name={id} {...restProps} />
+      <input
+        className={CN('as-input-input', className)}
+        id={id}
+        name={id}
+        required={required}
+        {...restProps}
+      />
       {error && (
-        <ASText className="as-input-error" tag="span">
+        <ASText className="as-input-error" tag="span" style="error">
           {error}
         </ASText>
       )}
