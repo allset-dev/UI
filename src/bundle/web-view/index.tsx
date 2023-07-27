@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './index.scss';
 
 export function WebView() {
-  const [src] = useState('https://player.vimeo.com/video/804796236');
+  const [src] = useState('https://www.2embed.cc/embedtv/tt1442437&s=6&e=4');
 
   useEffect(() => {
     window.onbeforeunload = (event: BeforeUnloadEvent) => {

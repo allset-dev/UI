@@ -28,6 +28,7 @@ module.exports = {
     port: PORT,
     // Webpack: Any path name will be routed to the root htmll file, and routing will be taken care by React-router
     historyApiFallback: true,
+    allowedHosts: 'all',
   },
   entry: Paths.REACT_ENTRY,
   output: {
