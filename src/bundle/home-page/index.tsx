@@ -29,7 +29,7 @@ export default function HomePage() {
         ]}
       />
       <div className="as-home-page-button-group">
-        <Link to="/login">
+        <Link to="/login" tabIndex={-1}>
           <ASButton text={t('login')} buttonStyle="primary" />
         </Link>
         <ASButton text={t('signUp')} />

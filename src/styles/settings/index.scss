@@ -1,2 +1,6 @@
 @import './font.scss';
 @import './theme/index.scss';
+
+a {
+  text-decoration: unset;
+}

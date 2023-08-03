@@ -27,9 +27,9 @@
 @mixin asThemeLight() {
   @include createTheme(
     $level0: #fafdf8,
-    $level1: #f0f1f2,
-    $level2: #d8d9db,
-    $level3: #d5d6d7,
+    $level1: #c9cacb,
+    $level2: #b0b0b0,
+    $level3: #818182,
     $level4: #0b1928,
     $text: #0b1928,
     $primary: #1456cb,

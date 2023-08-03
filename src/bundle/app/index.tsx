@@ -9,6 +9,7 @@ import { GlobalModals } from 'bundle/global-modals';
 import HomePage from 'bundle/home-page';
 import InterviewQuestions from 'bundle/interview-questions';
 import Login from 'bundle/login';
+import { Tiles } from 'bundle/tiles';
 import { WebView } from 'bundle/web-view';
 
 const isLoggedIn = false;
@@ -34,6 +35,7 @@ export function App() {
             component: <WebView />,
           },
           { path: '/control', component: <ControlWebView /> },
+          { path: '/tiles', component: <Tiles /> },
         ]}
         defaultRouteComponent={<AppRoutes />}
       />
