@@ -38,8 +38,6 @@ $as-border-active: 1;
 
   --as-surface-level-0: #{$level0};
   --as-surface-level-1: #{$level1};
-  --as-surface-level-2: #{$level2};
-  --as-surface-level-3: #{$level3};
   --as-surface-level-4: #{$level4};
   --as-text-strong: rgba(#{$text-rgb}, #{$as-color-strong});
   --as-text-normal: rgba(#{$text-rgb}, #{$as-color-normal});
@@ -61,4 +59,83 @@ $as-border-active: 1;
   --as-secondary-shadow-1: 0 1px 8px 2px #{$secondaryHover};
   --as-focus: #{$focusColor};
   --as-error: #{$error};
+
+  // :root {
+  //   --primary: #23b9d8;
+  //   --onPrimary: #fff;
+  //   --primaryBorder: transparent;
+
+  //   --secondary: transparent;
+  //   --onSecondary: inherit;
+  //   --secondaryBorder: #d7d9e4;
+  //   --secondaryHover: transparent;
+  //   --onSecondaryHover: #23b9d8;
+  //   --secondaryBorderHover: #23b9d8;
+
+  //   --surface: #fff;
+  //   --onSurface: #000;
+  //   --surfaceBorder: #d7d9e4;
+  //   --surfaceHover: #fff;
+  //   --onSurfaceHover: #fff;
+  //   --surfaceBorderHover: #94969c;
+
+  //   --elevation1: #f6f7fb;
+  //   --onElevation1: #000;
+  //   --elevation1Border: transparent;
+
+  //   --elevation2: #222d37;
+  //   --onElevation2: #fff;
+  //   --elevation2Border: transparent;
+
+  //   --error: #f2dede;
+  //   --onError: #e52f18;
+  //   --errorBorder: #e52f18;
+
+  //   --success: #e9f8f2;
+  //   --onSuccess: #00c884;
+  //   --successBorder: #00c884;
+
+  //   --borderRadius: 4px;
+  //   --borderRadiusLarge: 8px;
+
+  //   --borderWidth: 1px;
+  //   --spacing: 8px;
+  //   --spacing2: 12px;
+  //   --spacing3: 18px;
+  //   --spacing4: 24px;
+  //   --spacing6: 36px;
+
+  //   --fontSmall: 12px;
+  //   --fontRegular: 14px;
+  //   --fontLarge: 18px;
+  //   --fontLarger: 24px;
+  // }
+
+  /* Enable with updated colors if products wants a dark theme */
+
+  /* @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #23b9d8;
+      --onPrimary: #fff;
+      --primaryBorder: transparent;
+  
+      --secondary: transparent;
+      --onSecondary: inherit;
+      --secondaryBorder: #d7d9e4;
+      --onSecondaryHover: #23b9d8;
+      --secondaryBorderHover: #23b9d8;
+  
+      --surface: #000000;
+      --onSurface: #9c9a9a;
+      --surfaceBorder: #9c9a9a;
+  
+      --elevation1: #1b1b1b;
+      --onElevation1: #9c9a9a;
+      --elevation1Border: transparent;
+  
+      --elevation2: #222d37;
+      --onElevation2: #9c9a9a;
+      --elevation2Border: transparent;
+    }
+  } */
 }

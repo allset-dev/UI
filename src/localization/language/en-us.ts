@@ -23,6 +23,7 @@ export const enUSLanguage = {
   Please mark your calendar for Pillayar Nonbu on Dec 24th, 2021 For any enquiries,
   please contact organizing team at houston.nonbu@gmail.com.`,
   '*': '*',
+  controls: 'controls',
 } as const;
 
 export type LanguageDictionary = typeof enUSLanguage;
