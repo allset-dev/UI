@@ -1,4 +1,5 @@
 export const enUSLanguage = {
+  next: 'Next',
   login: 'Login',
   iNeedHelp: 'I need help',
   signUp: 'Sign up',

@@ -36,7 +36,7 @@ export default function Login() {
           type="password"
           required
           className="as-login-input"
-          label="Passpord"
+          label="Password"
           id="password"
         />
         <div className="as-login-button-group">

@@ -1,6 +1,8 @@
-import { LanguageKey } from './en-us';
+import { LanguageKey, enUSLanguage } from './en-us';
 
 export const taINLanguage: Record<LanguageKey, string> = {
+  ...enUSLanguage,
+  next: 'Next',
   login: 'Login',
   iNeedHelp: 'I need help',
   signUp: 'Sign up',

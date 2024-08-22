@@ -6,7 +6,7 @@
   // NOTE:(VSCODE) On save eslint, prettier and all other configured extensions will be executed on the saved file/files.
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // NOTE:(VSCODE) Refer to https://github.com/microsoft/vscode/issues/11963#issuecomment-317830768.
